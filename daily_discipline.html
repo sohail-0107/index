@@ -1,0 +1,3880 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover" />
+  <title>Daily Discipline</title>
+  <!-- Google Fonts: Space Grotesk for headings, Inter for body text -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Space+Grotesk:wght@600;700&display=swap" rel="stylesheet">
+  <style>
+    /* ==========================================================================
+       CSS VARIABLES & THEME TOKENS
+       ========================================================================== */
+    :root {
+      --bg-app: #f4f6fa;
+      --bg-surface: #ffffff;
+      --bg-surface-2: #eef2f8;
+      --bg-nav: rgba(255, 255, 255, 0.92);
+      --text-primary: #0f172a;
+      --text-secondary: #475569;
+      --text-muted: #64748b;
+      --border: #e2e8f0;
+      --border-strong: #cbd5e1;
+
+      --accent: #2563eb;
+      --accent-hover: #1d4ed8;
+      --accent-soft: rgba(37, 99, 235, 0.12);
+
+      --success: #10b981;
+      --success-soft: rgba(16, 185, 129, 0.14);
+      --danger: #ef4444;
+      --danger-soft: rgba(239, 68, 68, 0.13);
+      --warning: #f59e0b;
+      --warning-soft: rgba(245, 158, 11, 0.15);
+
+      /* Category Badges */
+      --cat-study: #2563eb;
+      --cat-study-bg: rgba(37, 99, 235, 0.12);
+      --cat-gym: #ea580c;
+      --cat-gym-bg: rgba(234, 88, 12, 0.12);
+      --cat-care: #8b5cf6;
+      --cat-care-bg: rgba(139, 92, 246, 0.12);
+      --cat-diet: #059669;
+      --cat-diet-bg: rgba(5, 150, 105, 0.12);
+      --cat-college: #0284c7;
+      --cat-college-bg: rgba(2, 132, 199, 0.12);
+      --cat-rest: #64748b;
+      --cat-rest-bg: rgba(100, 116, 139, 0.12);
+
+      --shadow-sm: 0 1px 2px rgba(15, 23, 42, 0.05);
+      --shadow-md: 0 4px 12px rgba(15, 23, 42, 0.07);
+      --radius-sm: 8px;
+      --radius-md: 12px;
+      --radius-lg: 16px;
+      --radius-xl: 20px;
+      --safe-bottom: env(safe-area-inset-bottom, 0px);
+      --safe-top: env(safe-area-inset-top, 0px);
+    }
+
+    @media (prefers-color-scheme: dark) {
+      :root:not([data-theme="light"]) {
+        --bg-app: #090d16;
+        --bg-surface: #111827;
+        --bg-surface-2: #1e293b;
+        --bg-nav: rgba(17, 24, 39, 0.92);
+        --text-primary: #f8fafc;
+        --text-secondary: #cbd5e1;
+        --text-muted: #94a3b8;
+        --border: #1e293b;
+        --border-strong: #334155;
+
+        --accent: #3b82f6;
+        --accent-hover: #60a5fa;
+        --accent-soft: rgba(59, 130, 246, 0.18);
+
+        --success: #10b981;
+        --success-soft: rgba(16, 185, 129, 0.18);
+        --danger: #f87171;
+        --danger-soft: rgba(248, 113, 113, 0.18);
+        --warning: #fbbf24;
+        --warning-soft: rgba(251, 191, 36, 0.18);
+
+        --cat-study: #60a5fa;
+        --cat-study-bg: rgba(59, 130, 246, 0.18);
+        --cat-gym: #fb923c;
+        --cat-gym-bg: rgba(249, 115, 22, 0.18);
+        --cat-care: #a78bfa;
+        --cat-care-bg: rgba(139, 92, 246, 0.18);
+        --cat-diet: #34d399;
+        --cat-diet-bg: rgba(16, 185, 129, 0.18);
+        --cat-college: #38bdf8;
+        --cat-college-bg: rgba(14, 165, 233, 0.18);
+        --cat-rest: #94a3b8;
+        --cat-rest-bg: rgba(148, 163, 184, 0.18);
+
+        --shadow-sm: 0 1px 2px rgba(0, 0, 0, 0.3);
+        --shadow-md: 0 6px 16px rgba(0, 0, 0, 0.4);
+      }
+    }
+
+    :root[data-theme="dark"] {
+      --bg-app: #090d16;
+      --bg-surface: #111827;
+      --bg-surface-2: #1e293b;
+      --bg-nav: rgba(17, 24, 39, 0.92);
+      --text-primary: #f8fafc;
+      --text-secondary: #cbd5e1;
+      --text-muted: #94a3b8;
+      --border: #1e293b;
+      --border-strong: #334155;
+
+      --accent: #3b82f6;
+      --accent-hover: #60a5fa;
+      --accent-soft: rgba(59, 130, 246, 0.18);
+
+      --success: #10b981;
+      --success-soft: rgba(16, 185, 129, 0.18);
+      --danger: #f87171;
+      --danger-soft: rgba(248, 113, 113, 0.18);
+      --warning: #fbbf24;
+      --warning-soft: rgba(251, 191, 36, 0.18);
+
+      --cat-study: #60a5fa;
+      --cat-study-bg: rgba(59, 130, 246, 0.18);
+      --cat-gym: #fb923c;
+      --cat-gym-bg: rgba(249, 115, 22, 0.18);
+      --cat-care: #a78bfa;
+      --cat-care-bg: rgba(139, 92, 246, 0.18);
+      --cat-diet: #34d399;
+      --cat-diet-bg: rgba(16, 185, 129, 0.18);
+      --cat-college: #38bdf8;
+      --cat-college-bg: rgba(14, 165, 233, 0.18);
+      --cat-rest: #94a3b8;
+      --cat-rest-bg: rgba(148, 163, 184, 0.18);
+
+      --shadow-sm: 0 1px 2px rgba(0, 0, 0, 0.3);
+      --shadow-md: 0 6px 16px rgba(0, 0, 0, 0.4);
+    }
+
+    /* ==========================================================================
+       RESET & BASE TYPOGRAPHY
+       ========================================================================== */
+    *, *::before, *::after {
+      box-sizing: border-box;
+      -webkit-tap-highlight-color: transparent;
+    }
+
+    html, body {
+      margin: 0;
+      padding: 0;
+      background-color: var(--bg-app);
+      color: var(--text-primary);
+      font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+      font-size: 15px;
+      line-height: 1.45;
+      overflow-x: hidden;
+      min-height: 100vh;
+    }
+
+    h1, h2, h3, h4, .font-heading {
+      font-family: 'Space Grotesk', sans-serif;
+      margin: 0;
+      letter-spacing: -0.02em;
+    }
+
+    button, input, select, textarea {
+      font-family: inherit;
+      font-size: 14px;
+      color: var(--text-primary);
+    }
+
+    button:focus-visible, input:focus-visible, select:focus-visible, textarea:focus-visible, [tabindex]:focus-visible {
+      outline: 2px solid var(--accent);
+      outline-offset: 2px;
+    }
+
+    /* ==========================================================================
+       LAYOUT SHELL
+       ========================================================================== */
+    .app-container {
+      max-width: 560px;
+      margin: 0 auto;
+      min-height: 100vh;
+      padding-top: calc(12px + var(--safe-top));
+      padding-bottom: calc(88px + var(--safe-bottom));
+      padding-left: 14px;
+      padding-right: 14px;
+    }
+
+    .card {
+      background: var(--bg-surface);
+      border: 1px solid var(--border);
+      border-radius: var(--radius-lg);
+      padding: 16px;
+      margin-bottom: 14px;
+      box-shadow: var(--shadow-sm);
+    }
+
+    .card-header {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 10px;
+      margin-bottom: 12px;
+    }
+
+    .card-title {
+      font-size: 17px;
+      font-weight: 700;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+
+    /* ==========================================================================
+       BUTTONS & INPUTS (>= 42px TAP TARGETS)
+       ========================================================================== */
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 6px;
+      min-height: 42px;
+      padding: 0 14px;
+      border-radius: var(--radius-md);
+      border: 1px solid var(--border-strong);
+      background: var(--bg-surface);
+      color: var(--text-primary);
+      font-weight: 600;
+      font-size: 14px;
+      cursor: pointer;
+      transition: transform 0.08s ease, background-color 0.15s ease, border-color 0.15s ease;
+      user-select: none;
+    }
+
+    .btn:active:not(:disabled) {
+      transform: scale(0.98);
+    }
+
+    .btn:disabled {
+      opacity: 0.48;
+      cursor: not-allowed;
+    }
+
+    .btn-primary {
+      background: var(--accent);
+      border-color: var(--accent);
+      color: #ffffff;
+    }
+
+    .btn-primary:hover:not(:disabled) {
+      background: var(--accent-hover);
+    }
+
+    .btn-success {
+      background: var(--success);
+      border-color: var(--success);
+      color: #ffffff;
+    }
+
+    .btn-danger {
+      background: var(--danger);
+      border-color: var(--danger);
+      color: #ffffff;
+    }
+
+    .btn-danger-outline {
+      background: var(--danger-soft);
+      border-color: var(--danger);
+      color: var(--danger);
+    }
+
+    .btn-ghost {
+      background: transparent;
+      border-color: transparent;
+    }
+
+    .btn-ghost:hover:not(:disabled) {
+      background: var(--bg-surface-2);
+    }
+
+    .btn-sm {
+      min-height: 36px;
+      padding: 0 10px;
+      font-size: 13px;
+      border-radius: var(--radius-sm);
+    }
+
+    .btn-icon {
+      width: 42px;
+      min-width: 42px;
+      padding: 0;
+    }
+
+    .input, .select, .textarea {
+      width: 100%;
+      min-height: 42px;
+      padding: 8px 12px;
+      border-radius: var(--radius-md);
+      border: 1px solid var(--border-strong);
+      background: var(--bg-app);
+      color: var(--text-primary);
+      transition: border-color 0.15s ease;
+    }
+
+    .input:focus, .select:focus, .textarea:focus {
+      border-color: var(--accent);
+    }
+
+    .textarea {
+      min-height: 90px;
+      resize: vertical;
+      font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace;
+      font-size: 12px;
+    }
+
+    label.field-label {
+      display: block;
+      font-size: 12px;
+      font-weight: 600;
+      color: var(--text-secondary);
+      margin-bottom: 4px;
+    }
+
+    /* ==========================================================================
+       BADGES & PILLS
+       ========================================================================== */
+    .badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 4px;
+      padding: 3px 8px;
+      border-radius: 999px;
+      font-size: 11px;
+      font-weight: 600;
+      line-height: 1.2;
+      white-space: nowrap;
+    }
+
+    .badge-accent { background: var(--accent-soft); color: var(--accent); }
+    .badge-success { background: var(--success-soft); color: var(--success); }
+    .badge-danger { background: var(--danger-soft); color: var(--danger); }
+    .badge-warning { background: var(--warning-soft); color: var(--warning); }
+    .badge-muted { background: var(--bg-surface-2); color: var(--text-muted); }
+
+    .cat-Study { background: var(--cat-study-bg); color: var(--cat-study); }
+    .cat-Gym { background: var(--cat-gym-bg); color: var(--cat-gym); }
+    .cat-Care { background: var(--cat-care-bg); color: var(--cat-care); }
+    .cat-Diet { background: var(--cat-diet-bg); color: var(--cat-diet); }
+    .cat-College { background: var(--cat-college-bg); color: var(--cat-college); }
+    .cat-Rest { background: var(--cat-rest-bg); color: var(--cat-rest); }
+
+    /* ==========================================================================
+       BANNERS & WARNINGS STRIP
+       ========================================================================== */
+    .banner {
+      border-radius: var(--radius-md);
+      padding: 12px 14px;
+      margin-bottom: 12px;
+      display: flex;
+      align-items: flex-start;
+      justify-content: space-between;
+      gap: 10px;
+      font-size: 13px;
+      border: 1px solid var(--border);
+    }
+
+    .banner-info {
+      background: var(--accent-soft);
+      border-color: rgba(37, 99, 235, 0.3);
+      color: var(--text-primary);
+    }
+
+    .banner-warning {
+      background: var(--warning-soft);
+      border-color: rgba(245, 158, 11, 0.4);
+      color: var(--text-primary);
+    }
+
+    .banner-danger {
+      background: var(--danger-soft);
+      border-color: rgba(239, 68, 68, 0.4);
+      color: var(--text-primary);
+    }
+
+    .alerts-stack {
+      display: flex;
+      flex-direction: column;
+      gap: 8px;
+      margin-bottom: 14px;
+    }
+
+    .alert-item {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      padding: 10px 12px;
+      border-radius: var(--radius-md);
+      font-size: 13px;
+      font-weight: 500;
+      border-left: 4px solid var(--warning);
+      background: var(--bg-surface);
+      border-top: 1px solid var(--border);
+      border-right: 1px solid var(--border);
+      border-bottom: 1px solid var(--border);
+      box-shadow: var(--shadow-sm);
+    }
+
+    .alert-item.urgent {
+      border-left-color: var(--danger);
+      background: var(--danger-soft);
+    }
+
+    .alert-item.info {
+      border-left-color: var(--accent);
+    }
+
+    /* ==========================================================================
+       BOTTOM NAVIGATION BAR
+       ========================================================================== */
+    .bottom-nav {
+      position: fixed;
+      bottom: 0;
+      left: 0;
+      right: 0;
+      z-index: 40;
+      background: var(--bg-nav);
+      backdrop-filter: blur(12px);
+      -webkit-backdrop-filter: blur(12px);
+      border-top: 1px solid var(--border);
+      padding-bottom: var(--safe-bottom);
+    }
+
+    .bottom-nav-inner {
+      max-width: 560px;
+      margin: 0 auto;
+      display: grid;
+      grid-template-columns: repeat(6, 1fr);
+      padding: 4px 6px;
+      gap: 2px;
+    }
+
+    .nav-btn {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      min-height: 52px;
+      padding: 4px 2px;
+      border: none;
+      background: transparent;
+      color: var(--text-muted);
+      border-radius: var(--radius-md);
+      cursor: pointer;
+      font-size: 11px;
+      font-weight: 600;
+      gap: 3px;
+      transition: color 0.15s ease, background-color 0.15s ease;
+    }
+
+    .nav-btn svg {
+      width: 20px;
+      height: 20px;
+      stroke-width: 2.1;
+    }
+
+    .nav-btn.active {
+      color: var(--accent);
+      background: var(--accent-soft);
+    }
+
+    /* ==========================================================================
+       TODAY TAB SPECIFICS
+       ========================================================================== */
+    .top-header {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      margin-bottom: 14px;
+      gap: 8px;
+    }
+
+    .hero-score-card {
+      display: flex;
+      align-items: center;
+      gap: 18px;
+    }
+
+    .ring-wrapper {
+      position: relative;
+      width: 116px;
+      height: 116px;
+      flex-shrink: 0;
+    }
+
+    .ring-center {
+      position: absolute;
+      inset: 0;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+    }
+
+    .ring-pct {
+      font-family: 'Space Grotesk', sans-serif;
+      font-size: 26px;
+      font-weight: 700;
+      line-height: 1;
+    }
+
+    .ring-sub {
+      font-size: 11px;
+      color: var(--text-muted);
+      margin-top: 2px;
+      font-weight: 600;
+    }
+
+    .streak-row {
+      display: flex;
+      gap: 10px;
+      margin-bottom: 8px;
+    }
+
+    .streak-pill {
+      background: var(--bg-surface-2);
+      padding: 6px 10px;
+      border-radius: var(--radius-sm);
+      font-size: 12px;
+      font-weight: 600;
+      display: flex;
+      align-items: center;
+      gap: 5px;
+    }
+
+    .chips-scroll {
+      display: flex;
+      gap: 8px;
+      overflow-x: auto;
+      padding-bottom: 4px;
+      margin-bottom: 14px;
+      scrollbar-width: none;
+    }
+
+    .chips-scroll::-webkit-scrollbar {
+      display: none;
+    }
+
+    .exam-chip {
+      flex-shrink: 0;
+      background: var(--bg-surface);
+      border: 1px solid var(--border);
+      border-radius: 999px;
+      padding: 6px 12px;
+      font-size: 12px;
+      font-weight: 600;
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      box-shadow: var(--shadow-sm);
+    }
+
+    /* Task / Timetable Block Row */
+    .block-row {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 10px;
+      padding: 12px;
+      border-radius: var(--radius-md);
+      border: 1px solid var(--border);
+      background: var(--bg-app);
+      margin-bottom: 8px;
+      transition: border-color 0.2s ease, background-color 0.2s ease;
+    }
+
+    .block-row:last-child {
+      margin-bottom: 0;
+    }
+
+    .block-row.is-current {
+      border-color: var(--accent);
+      background: var(--accent-soft);
+      box-shadow: 0 0 0 1px var(--accent);
+    }
+
+    .block-row.is-done {
+      opacity: 0.78;
+    }
+
+    .block-row.is-done .block-title {
+      text-decoration: line-through;
+      color: var(--text-muted);
+    }
+
+    .block-row.is-missed {
+      border-color: rgba(239, 68, 68, 0.35);
+      background: var(--danger-soft);
+    }
+
+    .check-btn {
+      width: 44px;
+      height: 44px;
+      min-width: 44px;
+      border-radius: 12px;
+      border: 2px solid var(--border-strong);
+      background: var(--bg-surface);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      cursor: pointer;
+      color: transparent;
+      transition: all 0.15s ease;
+    }
+
+    .check-btn.checked {
+      background: var(--success);
+      border-color: var(--success);
+      color: #ffffff;
+    }
+
+    .check-btn:disabled {
+      opacity: 0.42;
+      cursor: not-allowed;
+    }
+
+    /* Progress Bar */
+    .progress-track {
+      width: 100%;
+      height: 10px;
+      background: var(--bg-surface-2);
+      border-radius: 999px;
+      overflow: hidden;
+    }
+
+    .progress-fill {
+      height: 100%;
+      background: var(--accent);
+      border-radius: 999px;
+      transition: width 0.3s ease;
+    }
+
+    .progress-fill.success {
+      background: var(--success);
+    }
+
+    /* ==========================================================================
+       STUDY TIMER
+       ========================================================================== */
+    .timer-display {
+      font-family: 'Space Grotesk', sans-serif;
+      font-size: 52px;
+      font-weight: 700;
+      text-align: center;
+      letter-spacing: -0.03em;
+      margin: 14px 0;
+      font-variant-numeric: tabular-nums;
+    }
+
+    .pill-group {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 6px;
+      margin-bottom: 12px;
+    }
+
+    .pill-choice {
+      min-height: 42px;
+      border-radius: var(--radius-md);
+      border: 1px solid var(--border-strong);
+      background: var(--bg-app);
+      font-weight: 600;
+      font-size: 13px;
+      cursor: pointer;
+    }
+
+    .pill-choice.active {
+      background: var(--accent);
+      border-color: var(--accent);
+      color: #ffffff;
+    }
+
+    /* ==========================================================================
+       CARE 7-DAY DOTS & WEEKDAY TOGGLES
+       ========================================================================== */
+    .dots-row {
+      display: flex;
+      align-items: center;
+      gap: 6px;
+    }
+
+    .day-dot {
+      width: 18px;
+      height: 18px;
+      border-radius: 50%;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 9px;
+      font-weight: 700;
+    }
+
+    .day-dot.done { background: var(--success); color: #fff; }
+    .day-dot.missed { background: var(--danger); color: #fff; }
+    .day-dot.pending { background: var(--accent-soft); color: var(--accent); border: 1px solid var(--accent); }
+    .day-dot.not-due { background: transparent; border: 1.5px dashed var(--border-strong); color: var(--text-muted); }
+
+    .weekday-toggles {
+      display: grid;
+      grid-template-columns: repeat(7, 1fr);
+      gap: 4px;
+    }
+
+    .wk-btn {
+      min-height: 38px;
+      border-radius: var(--radius-sm);
+      border: 1px solid var(--border-strong);
+      background: var(--bg-app);
+      font-size: 12px;
+      font-weight: 700;
+      cursor: pointer;
+    }
+
+    .wk-btn.active {
+      background: var(--accent);
+      border-color: var(--accent);
+      color: #fff;
+    }
+
+    /* ==========================================================================
+       STATS HEATMAP & KPI GRID
+       ========================================================================== */
+    .kpi-grid {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 10px;
+      margin-bottom: 14px;
+    }
+
+    .kpi-box {
+      background: var(--bg-surface);
+      border: 1px solid var(--border);
+      border-radius: var(--radius-md);
+      padding: 12px;
+    }
+
+    .kpi-val {
+      font-family: 'Space Grotesk', sans-serif;
+      font-size: 22px;
+      font-weight: 700;
+      margin-top: 2px;
+    }
+
+    .heatmap-grid {
+      display: grid;
+      grid-template-columns: repeat(7, 1fr);
+      gap: 6px;
+    }
+
+    .heat-cell {
+      aspect-ratio: 1;
+      border-radius: var(--radius-sm);
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      font-size: 11px;
+      font-weight: 700;
+      border: 1px solid var(--border);
+      cursor: pointer;
+      background: var(--bg-app);
+      padding: 2px;
+    }
+
+    .heat-cell.qualifies {
+      background: var(--success);
+      border-color: var(--success);
+      color: #ffffff;
+    }
+
+    .heat-cell.partial {
+      background: var(--accent-soft);
+      border-color: rgba(37, 99, 235, 0.35);
+      color: var(--accent);
+    }
+
+    .heat-cell.missed {
+      background: var(--danger-soft);
+      border-color: rgba(239, 68, 68, 0.3);
+      color: var(--danger);
+    }
+
+    .heat-cell.selected {
+      outline: 2px solid var(--text-primary);
+      outline-offset: 1px;
+    }
+
+    /* ==========================================================================
+       SETTINGS MODAL OVERLAY
+       ========================================================================== */
+    .modal-overlay {
+      position: fixed;
+      inset: 0;
+      z-index: 60;
+      background: var(--bg-app);
+      overflow-y: auto;
+      padding: calc(14px + var(--safe-top)) 14px calc(32px + var(--safe-bottom));
+      display: none;
+    }
+
+    .modal-overlay.open {
+      display: block;
+    }
+
+    .modal-inner {
+      max-width: 560px;
+      margin: 0 auto;
+    }
+
+    /* ==========================================================================
+       TOAST NOTIFICATIONS
+       ========================================================================== */
+    .toast-container {
+      position: fixed;
+      top: calc(14px + var(--safe-top));
+      left: 50%;
+      transform: translateX(-50%);
+      z-index: 100;
+      width: calc(100% - 28px);
+      max-width: 520px;
+      display: flex;
+      flex-direction: column;
+      gap: 8px;
+      pointer-events: none;
+    }
+
+    .toast {
+      background: var(--text-primary);
+      color: var(--bg-surface);
+      padding: 12px 14px;
+      border-radius: var(--radius-md);
+      font-size: 13px;
+      font-weight: 600;
+      box-shadow: var(--shadow-md);
+      pointer-events: auto;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 10px;
+      animation: slideDown 0.2s ease;
+    }
+
+    .toast.danger {
+      background: var(--danger);
+      color: #ffffff;
+    }
+
+    .toast.success {
+      background: var(--success);
+      color: #ffffff;
+    }
+
+    @keyframes slideDown {
+      from { opacity: 0; transform: translateY(-10px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    /* Helpers */
+    .row { display: flex; align-items: center; gap: 8px; }
+    .row-between { display: flex; align-items: center; justify-content: space-between; gap: 8px; }
+    .grid-2 { display: grid; grid-template-columns: 1fr 1fr; gap: 8px; }
+    .grid-3 { display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 8px; }
+    .text-xs { font-size: 12px; }
+    .text-sm { font-size: 13px; }
+    .text-muted { color: var(--text-muted); }
+    .text-secondary { color: var(--text-secondary); }
+    .font-bold { font-weight: 700; }
+    .font-semi { font-weight: 600; }
+    .mt-1 { margin-top: 4px; }
+    .mt-2 { margin-top: 8px; }
+    .mt-3 { margin-top: 12px; }
+    .mb-2 { margin-bottom: 8px; }
+    .mb-3 { margin-bottom: 12px; }
+  </style>
+</head>
+<body>
+
+  <!-- Persistent Storage Error Banner (shown if localStorage fails) -->
+  <div id="storage-warning-banner" class="app-container" style="display:none; padding-bottom:0; min-height:auto;">
+    <div class="banner banner-danger">
+      <div>
+        <strong>Storage Warning:</strong> Browser localStorage is blocked or full. Your progress cannot be saved permanently. Use Settings &rarr; Copy Backup regularly.
+      </div>
+    </div>
+  </div>
+
+  <!-- Floating Toasts -->
+  <div id="toast-container" class="toast-container" aria-live="polite"></div>
+
+  <!-- Main App Container -->
+  <main id="app" class="app-container"></main>
+
+  <!-- Settings Full-Screen Overlay -->
+  <div id="settings-modal" class="modal-overlay" role="dialog" aria-modal="true" aria-label="Settings">
+    <div id="settings-content" class="modal-inner"></div>
+  </div>
+
+  <!-- Bottom Tab Bar (6 Tabs) -->
+  <nav class="bottom-nav" aria-label="Main Navigation">
+    <div class="bottom-nav-inner">
+      <button class="nav-btn active" data-tab="today" onclick="switchTab('today')">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor"><circle cx="12" cy="12" r="9"/><polyline points="12 7 12 12 15 15"/></svg>
+        <span>Today</span>
+      </button>
+      <button class="nav-btn" data-tab="study" onclick="switchTab('study')">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor"><path d="M2 3h6a4 4 0 0 1 4 4v14a3 3 0 0 0-3-3H2z"/><path d="M22 3h-6a4 4 0 0 0-4 4v14a3 3 0 0 1 3-3h7z"/></svg>
+        <span>Study</span>
+      </button>
+      <button class="nav-btn" data-tab="body" onclick="switchTab('body')">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor"><path d="M6.5 6.5h11"/><path d="M6.5 17.5h11"/><path d="M4 9v6"/><path d="M20 9v6"/><path d="M2 10v4"/><path d="M22 10v4"/><line x1="12" y1="6.5" x2="12" y2="17.5"/></svg>
+        <span>Body</span>
+      </button>
+      <button class="nav-btn" data-tab="care" onclick="switchTab('care')">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
+        <span>Care</span>
+      </button>
+      <button class="nav-btn" data-tab="plan" onclick="switchTab('plan')">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor"><rect x="3" y="4" width="18" height="18" rx="2" ry="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/></svg>
+        <span>Plan</span>
+      </button>
+      <button class="nav-btn" data-tab="stats" onclick="switchTab('stats')">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor"><line x1="18" y1="20" x2="18" y2="10"/><line x1="12" y1="20" x2="12" y2="4"/><line x1="6" y1="20" x2="6" y2="14"/></svg>
+        <span>Stats</span>
+      </button>
+    </div>
+  </nav>
+
+  <script>
+    /* ==========================================================================
+       CONSTANTS & UTILITIES
+       ========================================================================== */
+    const STORAGE_KEY = 'daily_discipline_v1';
+    const SEVEN_DAYS_MS = 7 * 24 * 60 * 60 * 1000;
+    const UNDO_WINDOW_MS = 30 * 1000;
+    const GRACE_MINUTES = 60;
+    const CATEGORIES = ['Study', 'Gym', 'Care', 'Diet', 'College', 'Rest'];
+    const CARE_GROUPS = ['Skin care', 'Hair care', 'Diet habits', 'Other'];
+    const TIME_OF_DAY_GROUPS = ['Morning', 'Night', 'Any time'];
+    const WEEKDAY_SHORT = ['S', 'M', 'T', 'W', 'T', 'F', 'S'];
+    const WEEKDAY_NAMES = ['Sunday', 'Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday'];
+
+    function uid(prefix = 'id') {
+      return `${prefix}_${Date.now().toString(36)}_${Math.random().toString(36).slice(2, 7)}`;
+    }
+
+    function escapeHtml(str) {
+      if (str === null || str === undefined) return '';
+      return String(str)
+        .replace(/&/g, '&amp;')
+        .replace(/</g, '&lt;')
+        .replace(/>/g, '&gt;')
+        .replace(/"/g, '&quot;')
+        .replace(/'/g, '&#39;');
+    }
+
+    function getLocalDateKey(dateObj = new Date()) {
+      const y = dateObj.getFullYear();
+      const m = String(dateObj.getMonth() + 1).padStart(2, '0');
+      const d = String(dateObj.getDate()).padStart(2, '0');
+      return `${y}-${m}-${d}`;
+    }
+
+    function parseDateKey(key) {
+      const [y, m, d] = key.split('-').map(Number);
+      return new Date(y, m - 1, d);
+    }
+
+    function addDaysToKey(key, deltaDays) {
+      const dt = parseDateKey(key);
+      dt.setDate(dt.getDate() + deltaDays);
+      return getLocalDateKey(dt);
+    }
+
+    function formatDisplayDate(key) {
+      const dt = parseDateKey(key);
+      return dt.toLocaleDateString(undefined, { weekday: 'short', month: 'short', day: 'numeric' });
+    }
+
+    function timeToMinutes(hhmm) {
+      if (!hhmm || !hhmm.includes(':')) return 0;
+      const [h, m] = hhmm.split(':').map(Number);
+      return (h * 60) + m;
+    }
+
+    function getCurrentMinutesOfDay(dateObj = new Date()) {
+      return dateObj.getHours() * 60 + dateObj.getMinutes();
+    }
+
+    function formatDurationMMSS(totalSeconds) {
+      const sec = Math.max(0, Math.floor(totalSeconds));
+      const h = Math.floor(sec / 3600);
+      const m = Math.floor((sec % 3600) / 60);
+      const s = sec % 60;
+      if (h > 0) {
+        return `${String(h).padStart(2, '0')}:${String(m).padStart(2, '0')}:${String(s).padStart(2, '0')}`;
+      }
+      return `${String(m).padStart(2, '0')}:${String(s).padStart(2, '0')}`;
+    }
+
+    /* ==========================================================================
+       WEB AUDIO CHIME (NO EXTERNAL FILES)
+       ========================================================================== */
+    function playDisciplineChime(urgent = false) {
+      if (!state?.settings?.soundAlerts) return;
+      try {
+        const AudioCtx = window.AudioContext || window.webkitAudioContext;
+        if (!AudioCtx) return;
+        const ctx = new AudioCtx();
+        const now = ctx.currentTime;
+        const osc = ctx.createOscillator();
+        const gain = ctx.createGain();
+        osc.type = urgent ? 'sawtooth' : 'sine';
+        osc.frequency.setValueAtTime(urgent ? 520 : 660, now);
+        osc.frequency.exponentialRampToValueAtTime(urgent ? 380 : 880, now + 0.22);
+        gain.gain.setValueAtTime(0.08, now);
+        gain.gain.exponentialRampToValueAtTime(0.001, now + 0.28);
+        osc.connect(gain);
+        gain.connect(ctx.destination);
+        osc.start(now);
+        osc.stop(now + 0.3);
+      } catch (e) {
+        // Ignore audio errors when autoplay is restricted
+      }
+    }
+
+    /* ==========================================================================
+       DEFAULT SAMPLE DATA FACTORY
+       ========================================================================== */
+    function createDefaultState() {
+      const todayKey = getLocalDateKey();
+      const ttCollegeId = 'tt_college';
+      const ttExamId = 'tt_exam';
+      const ttSundayId = 'tt_sunday';
+      const sem1Id = 'sem_default_1';
+
+      const timetables = {
+        [ttCollegeId]: {
+          id: ttCollegeId,
+          name: 'College day',
+          blocks: [
+            { id: 'b_c1', start: '06:30', end: '07:15', title: 'Wake up & morning skincare', category: 'Care' },
+            { id: 'b_c2', start: '07:15', end: '08:00', title: 'High-protein breakfast', category: 'Diet' },
+            { id: 'b_c3', start: '08:00', end: '16:00', title: 'College classes & labs', category: 'College' },
+            { id: 'b_c4', start: '16:00', end: '17:00', title: 'Pre-workout snack & rest', category: 'Rest' },
+            { id: 'b_c5', start: '17:00', end: '19:00', title: 'Gym & strength training', category: 'Gym' },
+            { id: 'b_c6', start: '19:00', end: '19:30', title: 'Post-gym shower & skincare', category: 'Care' },
+            { id: 'b_c7', start: '19:30', end: '20:15', title: 'Dinner', category: 'Diet' },
+            { id: 'b_c8', start: '20:15', end: '22:15', title: 'Focused evening study hour', category: 'Study' },
+            { id: 'b_c9', start: '22:15', end: '23:00', title: 'Night routine & sleep prep', category: 'Care' }
+          ]
+        },
+        [ttExamId]: {
+          id: ttExamId,
+          name: 'Exam time',
+          blocks: [
+            { id: 'b_e1', start: '06:30', end: '07:15', title: 'Wake, hydrate & skincare', category: 'Care' },
+            { id: 'b_e2', start: '07:15', end: '08:00', title: 'Breakfast', category: 'Diet' },
+            { id: 'b_e3', start: '08:00', end: '11:00', title: 'Deep revision block 1', category: 'Study' },
+            { id: 'b_e4', start: '11:00', end: '11:30', title: 'Break & snack', category: 'Rest' },
+            { id: 'b_e5', start: '11:30', end: '13:30', title: 'Past papers & practice', category: 'Study' },
+            { id: 'b_e6', start: '13:30', end: '14:30', title: 'Lunch & rest', category: 'Diet' },
+            { id: 'b_e7', start: '14:30', end: '17:30', title: 'Deep revision block 2', category: 'Study' },
+            { id: 'b_e8', start: '17:30', end: '18:30', title: 'Light workout & walk', category: 'Gym' },
+            { id: 'b_e9', start: '18:30', end: '19:30', title: 'Shower & dinner', category: 'Care' },
+            { id: 'b_e10', start: '19:30', end: '21:30', title: 'Evening review & flashcards', category: 'Study' },
+            { id: 'b_e11', start: '21:30', end: '22:30', title: 'Night routine & sleep', category: 'Care' }
+          ]
+        },
+        [ttSundayId]: {
+          id: ttSundayId,
+          name: 'Sunday reset',
+          blocks: [
+            { id: 'b_s1', start: '08:00', end: '09:00', title: 'Slow morning, breakfast & skincare', category: 'Care' },
+            { id: 'b_s2', start: '09:00', end: '12:00', title: 'Weekly deep study & backlog catch-up', category: 'Study' },
+            { id: 'b_s3', start: '12:00', end: '13:30', title: 'Lunch & rest', category: 'Diet' },
+            { id: 'b_s4', start: '13:30', end: '15:30', title: 'Gym session', category: 'Gym' },
+            { id: 'b_s5', start: '15:30', end: '17:00', title: 'Meal prep & groceries', category: 'Diet' },
+            { id: 'b_s6', start: '17:00', end: '18:30', title: 'Weekly planning & room reset', category: 'Study' },
+            { id: 'b_s7', start: '21:30', end: '22:30', title: 'Hair oil, night skincare & sleep', category: 'Care' }
+          ]
+        }
+      };
+
+      const routines = [
+        { id: 'r_1', name: 'Cleanser & sunscreen', group: 'Skin care', timeOfDay: 'Morning', days: [true, true, true, true, true, true, true] },
+        { id: 'r_2', name: 'Night cleanser & moisturizer', group: 'Skin care', timeOfDay: 'Night', days: [true, true, true, true, true, true, true] },
+        { id: 'r_3', name: 'Hair oil scalp massage', group: 'Hair care', timeOfDay: 'Night', days: [true, false, false, true, false, false, false] },
+        { id: 'r_4', name: 'Hair wash & conditioner', group: 'Hair care', timeOfDay: 'Morning', days: [false, true, false, false, true, false, false] },
+        { id: 'r_5', name: 'No junk food or sugary drinks', group: 'Diet habits', timeOfDay: 'Any time', days: [true, true, true, true, true, true, true] },
+        { id: 'r_6', name: 'Hit daily protein target', group: 'Diet habits', timeOfDay: 'Any time', days: [true, true, true, true, true, true, true] },
+        { id: 'r_7', name: 'In bed before 11:30 PM', group: 'Other', timeOfDay: 'Night', days: [true, true, true, true, true, true, true] }
+      ];
+
+      return {
+        version: 1,
+        sampleBannerDismissed: false,
+        settings: {
+          theme: 'system', // 'system' | 'light' | 'dark'
+          strictMode: true,
+          strictEnabledAt: Date.now() - (2 * 24 * 60 * 60 * 1000), // Enabled 2 days ago by default so 5d lock shown clearly
+          streakThreshold: 80,
+          dailyStudyGoalMin: 90,
+          dailyCaloriesTarget: 2400,
+          dailyProteinTarget: 140,
+          dailyWaterTarget: 8,
+          soundAlerts: true
+        },
+        timetables,
+        weekdayTimetables: {
+          0: ttSundayId, // Sunday
+          1: ttCollegeId,
+          2: ttCollegeId,
+          3: ttCollegeId,
+          4: ttCollegeId,
+          5: ttCollegeId,
+          6: ttCollegeId
+        },
+        examPeriod: {
+          enabled: false,
+          startDate: addDaysToKey(todayKey, 10),
+          endDate: addDaysToKey(todayKey, 24),
+          timetableId: ttExamId
+        },
+        selectedPlanTimetableId: ttCollegeId,
+        semesters: [
+          {
+            id: sem1Id,
+            name: 'Semester 1 (Sample)',
+            subjects: [
+              { id: 'sub_1', name: 'Data Structures', weeklyGoalHours: 6 },
+              { id: 'sub_2', name: 'Linear Algebra', weeklyGoalHours: 5 },
+              { id: 'sub_3', name: 'Operating Systems', weeklyGoalHours: 5 },
+              { id: 'sub_4', name: 'Communication & Ethics', weeklyGoalHours: 2 }
+            ]
+          }
+        ],
+        activeSemesterId: sem1Id,
+        exams: [
+          { id: 'ex_1', name: 'Data Structures Midterm', date: addDaysToKey(todayKey, 12) },
+          { id: 'ex_2', name: 'Operating Systems Exam', date: addDaysToKey(todayKey, 24) }
+        ],
+        routines,
+        studySessions: [], // { id, dateKey, semesterId, subjectId, minutes, distractions, endedAt }
+        activeTimer: {
+          running: false,
+          subjectId: 'sub_1',
+          modeMinutes: 50, // 0 = Free, 25, 50, 90
+          startedAt: null,
+          accumulatedMs: 0,
+          distractions: 0,
+          lastHiddenAt: null
+        },
+        gymLogs: [], // { id, dateKey, exercise, sets, reps, kg }
+        dietLogs: [], // { id, dateKey, name, kcal, protein }
+        weightLogs: [
+          { dateKey: addDaysToKey(todayKey, -6), kg: 72.4 },
+          { dateKey: addDaysToKey(todayKey, -3), kg: 72.1 },
+          { dateKey: addDaysToKey(todayKey, -1), kg: 71.9 }
+        ],
+        days: {}, // { [YYYY-MM-DD]: DaySnapshot }
+        bestStreak: 0,
+        firedNotifications: {} // { [YYYY-MM-DD]: { [notifKey]: true } }
+      };
+    }
+
+    /* ==========================================================================
+       STATE MANAGEMENT & PERSISTENCE
+       ========================================================================== */
+    let state = loadState();
+    let activeTab = 'today';
+    let selectedStatsDateKey = getLocalDateKey();
+    let pendingConfirmKey = null;
+    let pendingConfirmTimer = null;
+    let wakeLockSentinel = null;
+    let backupFallbackVisible = false;
+    let lastDistractionBanner = null;
+
+    function loadState() {
+      try {
+        const raw = localStorage.getItem(STORAGE_KEY);
+        if (!raw) {
+          const fresh = createDefaultState();
+          ensureDaySnapshot(fresh, getLocalDateKey());
+          saveStateObject(fresh);
+          return fresh;
+        }
+        const parsed = JSON.parse(raw);
+        if (!parsed || typeof parsed !== 'object') throw new Error('Invalid state');
+        ensureDaySnapshot(parsed, getLocalDateKey());
+        return parsed;
+      } catch (e) {
+        const fallback = createDefaultState();
+        ensureDaySnapshot(fallback, getLocalDateKey());
+        return fallback;
+      }
+    }
+
+    function saveStateObject(obj) {
+      try {
+        localStorage.setItem(STORAGE_KEY, JSON.stringify(obj));
+        const warnEl = document.getElementById('storage-warning-banner');
+        if (warnEl) warnEl.style.display = 'none';
+        return true;
+      } catch (e) {
+        const warnEl = document.getElementById('storage-warning-banner');
+        if (warnEl) warnEl.style.display = 'block';
+        return false;
+      }
+    }
+
+    function saveState() {
+      // Update bestStreak before saving
+      const streakStats = computeStreaks();
+      if (streakStats.best > (state.bestStreak || 0)) {
+        state.bestStreak = streakStats.best;
+      }
+      saveStateObject(state);
+    }
+
+    function applyTheme() {
+      const theme = state.settings.theme || 'system';
+      if (theme === 'system') {
+        document.documentElement.removeAttribute('data-theme');
+      } else {
+        document.documentElement.setAttribute('data-theme', theme);
+      }
+    }
+
+    function showToast(message, type = 'default', duration = 3400) {
+      const container = document.getElementById('toast-container');
+      if (!container) return;
+      const toast = document.createElement('div');
+      toast.className = `toast ${type}`;
+      toast.innerHTML = `<span>${escapeHtml(message)}</span>`;
+      container.appendChild(toast);
+      setTimeout(() => {
+        toast.style.opacity = '0';
+        toast.style.transition = 'opacity 0.2s ease';
+        setTimeout(() => toast.remove(), 220);
+      }, duration);
+    }
+
+    function requireTwoTapConfirm(actionKey, labelPrompt) {
+      if (pendingConfirmKey === actionKey) {
+        pendingConfirmKey = null;
+        clearTimeout(pendingConfirmTimer);
+        return true;
+      }
+      pendingConfirmKey = actionKey;
+      clearTimeout(pendingConfirmTimer);
+      showToast(labelPrompt || 'Tap again within 4s to confirm', 'danger', 3800);
+      renderCurrentView();
+      pendingConfirmTimer = setTimeout(() => {
+        pendingConfirmKey = null;
+        renderCurrentView();
+      }, 4000);
+      return false;
+    }
+
+    /* ==========================================================================
+       DAILY SNAPSHOT ENGINE (ANTI-CHEATING)
+       ========================================================================== */
+    function resolveScheduledTimetableId(targetState, dateKey) {
+      // Check Exam Period override first
+      const ep = targetState.examPeriod;
+      if (ep && ep.enabled && ep.startDate && ep.endDate && ep.timetableId && targetState.timetables[ep.timetableId]) {
+        if (dateKey >= ep.startDate && dateKey <= ep.endDate) {
+          return ep.timetableId;
+        }
+      }
+      const dow = parseDateKey(dateKey).getDay(); // 0..6
+      const assignedId = targetState.weekdayTimetables[dow];
+      if (assignedId && targetState.timetables[assignedId]) {
+        return assignedId;
+      }
+      const firstId = Object.keys(targetState.timetables)[0];
+      return firstId;
+    }
+
+    function buildSnapshotForDate(targetState, dateKey, overrideTimetableId = null) {
+      const ttId = overrideTimetableId || resolveScheduledTimetableId(targetState, dateKey);
+      const tt = targetState.timetables[ttId] || Object.values(targetState.timetables)[0];
+      const dow = parseDateKey(dateKey).getDay();
+
+      const blocks = (tt ? tt.blocks : [])
+        .slice()
+        .sort((a, b) => timeToMinutes(a.start) - timeToMinutes(b.start))
+        .map(b => ({
+          id: b.id,
+          start: b.start,
+          end: b.end,
+          title: b.title,
+          category: b.category,
+          done: false,
+          doneAt: null
+        }));
+
+      const dueRoutines = (targetState.routines || [])
+        .filter(r => Array.isArray(r.days) && r.days[dow])
+        .map(r => ({
+          id: r.id,
+          name: r.name,
+          group: r.group,
+          timeOfDay: r.timeOfDay,
+          done: false,
+          doneAt: null
+        }));
+
+      return {
+        dateKey,
+        createdAt: Date.now(),
+        timetableId: tt ? tt.id : null,
+        timetableName: tt ? tt.name : 'Default',
+        studyGoalMin: targetState.settings.dailyStudyGoalMin || 90,
+        studyMinutesLogged: 0,
+        waterGlasses: 0,
+        blocks,
+        routines: dueRoutines
+      };
+    }
+
+    function ensureDaySnapshot(targetState, dateKey) {
+      if (!targetState.days) targetState.days = {};
+      if (!targetState.days[dateKey]) {
+        targetState.days[dateKey] = buildSnapshotForDate(targetState, dateKey);
+      }
+      return targetState.days[dateKey];
+    }
+
+    function getTodaySnapshot() {
+      const todayKey = getLocalDateKey();
+      return ensureDaySnapshot(state, todayKey);
+    }
+
+    function canSwitchTodayTimetable(snap) {
+      if (!snap) return false;
+      const anyBlockDone = snap.blocks.some(b => b.done);
+      const anyRoutineDone = snap.routines.some(r => r.done);
+      const anyStudy = (snap.studyMinutesLogged || 0) > 0;
+      return !anyBlockDone && !anyRoutineDone && !anyStudy;
+    }
+
+    function switchTodayTimetable(newTimetableId) {
+      const todayKey = getLocalDateKey();
+      const snap = getTodaySnapshot();
+      if (!canSwitchTodayTimetable(snap)) {
+        showToast('Locked: Cannot switch timetable after logging tasks or study today.', 'danger');
+        return;
+      }
+      if (!state.timetables[newTimetableId]) return;
+      const oldWater = snap.waterGlasses || 0;
+      const freshSnap = buildSnapshotForDate(state, todayKey, newTimetableId);
+      freshSnap.waterGlasses = oldWater;
+      state.days[todayKey] = freshSnap;
+      saveState();
+      showToast(`Switched today to "${freshSnap.timetableName}"`, 'success');
+      renderCurrentView();
+    }
+
+    /* ==========================================================================
+       STRICT MODE VALIDATION & SCORING
+       ========================================================================== */
+    function isStrictModeLocked() {
+      if (!state.settings.strictMode) return false;
+      const enabledAt = state.settings.strictEnabledAt || 0;
+      return (Date.now() - enabledAt) < SEVEN_DAYS_MS;
+    }
+
+    function getStrictLockRemainingText() {
+      const enabledAt = state.settings.strictEnabledAt || 0;
+      const remMs = Math.max(0, SEVEN_DAYS_MS - (Date.now() - enabledAt));
+      const days = Math.floor(remMs / (24 * 60 * 60 * 1000));
+      const hours = Math.floor((remMs % (24 * 60 * 60 * 1000)) / (60 * 60 * 1000));
+      return `${days}d ${hours}h remaining`;
+    }
+
+    function getBlockWindowStatus(block, dateKey) {
+      const todayKey = getLocalDateKey();
+      const isPast = dateKey < todayKey;
+      const strict = !!state.settings.strictMode;
+
+      if (isPast) {
+        return {
+          status: block.done ? 'done' : 'missed',
+          canToggle: false,
+          isCurrent: false,
+          label: block.done ? 'Completed' : 'Missed',
+          badgeClass: block.done ? 'badge-success' : 'badge-danger'
+        };
+      }
+
+      const now = new Date();
+      const nowMin = getCurrentMinutesOfDay(now);
+      const startMin = timeToMinutes(block.start);
+      let endMin = timeToMinutes(block.end);
+      if (endMin < startMin) endMin += 24 * 60; // overnight safety
+      const deadlineMin = endMin + GRACE_MINUTES;
+      const isCurrent = nowMin >= startMin && nowMin < endMin;
+
+      // Already ticked
+      if (block.done) {
+        if (!strict) {
+          return { status: 'done', canToggle: true, isCurrent, label: 'Done', badgeClass: 'badge-success' };
+        }
+        const elapsedSinceTick = block.doneAt ? (Date.now() - block.doneAt) : Infinity;
+        if (elapsedSinceTick <= UNDO_WINDOW_MS) {
+          const leftSec = Math.ceil((UNDO_WINDOW_MS - elapsedSinceTick) / 1000);
+          return { status: 'done', canToggle: true, isCurrent, label: `Undo (${leftSec}s)`, badgeClass: 'badge-warning' };
+        }
+        return { status: 'done', canToggle: false, isCurrent, label: 'Locked Done', badgeClass: 'badge-success' };
+      }
+
+      // Not ticked yet
+      if (!strict) {
+        return {
+          status: isCurrent ? 'active' : 'open',
+          canToggle: true,
+          isCurrent,
+          label: isCurrent ? 'Active now' : 'Open',
+          badgeClass: isCurrent ? 'badge-accent' : 'badge-muted'
+        };
+      }
+
+      if (nowMin < startMin) {
+        return {
+          status: 'upcoming',
+          canToggle: false,
+          isCurrent: false,
+          label: `Opens ${block.start}`,
+          badgeClass: 'badge-muted'
+        };
+      }
+
+      if (nowMin <= deadlineMin) {
+        const minsToClose = deadlineMin - nowMin;
+        if (!isCurrent && minsToClose <= 20) {
+          return {
+            status: 'closing',
+            canToggle: true,
+            isCurrent: false,
+            label: `Closes in ${minsToClose}m`,
+            badgeClass: 'badge-warning'
+          };
+        }
+        return {
+          status: isCurrent ? 'active' : 'grace',
+          canToggle: true,
+          isCurrent,
+          label: isCurrent ? 'Active now' : `Grace (${minsToClose}m left)`,
+          badgeClass: isCurrent ? 'badge-accent' : 'badge-warning'
+        };
+      }
+
+      return {
+        status: 'missed',
+        canToggle: false,
+        isCurrent: false,
+        label: 'Missed',
+        badgeClass: 'badge-danger'
+      };
+    }
+
+    function getRoutineStatus(routine, dateKey) {
+      const todayKey = getLocalDateKey();
+      const isPast = dateKey < todayKey;
+      const strict = !!state.settings.strictMode;
+
+      if (isPast) {
+        return {
+          canToggle: false,
+          label: routine.done ? 'Done' : 'Missed',
+          badgeClass: routine.done ? 'badge-success' : 'badge-danger'
+        };
+      }
+
+      if (routine.done) {
+        if (!strict) {
+          return { canToggle: true, label: 'Done', badgeClass: 'badge-success' };
+        }
+        const elapsed = routine.doneAt ? (Date.now() - routine.doneAt) : Infinity;
+        if (elapsed <= UNDO_WINDOW_MS) {
+          const leftSec = Math.ceil((UNDO_WINDOW_MS - elapsed) / 1000);
+          return { canToggle: true, label: `Undo (${leftSec}s)`, badgeClass: 'badge-warning' };
+        }
+        return { canToggle: false, label: 'Locked Done', badgeClass: 'badge-success' };
+      }
+
+      return { canToggle: true, label: 'Due today', badgeClass: 'badge-muted' };
+    }
+
+    function calculateDayScore(snap) {
+      if (!snap) {
+        return { score: 0, completed: 0, total: 1, neededForStreak: 1, studyMet: false };
+      }
+      const totalBlocks = snap.blocks ? snap.blocks.length : 0;
+      const totalRoutines = snap.routines ? snap.routines.length : 0;
+      const total = totalBlocks + totalRoutines + 1; // +1 for daily study goal
+
+      const doneBlocks = snap.blocks ? snap.blocks.filter(b => b.done).length : 0;
+      const doneRoutines = snap.routines ? snap.routines.filter(r => r.done).length : 0;
+      const studyMet = (snap.studyMinutesLogged || 0) >= (snap.studyGoalMin || 90);
+
+      const completed = doneBlocks + doneRoutines + (studyMet ? 1 : 0);
+      const score = total > 0 ? Math.round((completed / total) * 100) : 0;
+      const threshold = state.settings.streakThreshold || 80;
+      const minRequiredItems = Math.ceil((threshold / 100) * total);
+      const neededForStreak = Math.max(0, minRequiredItems - completed);
+
+      return { score, completed, total, neededForStreak, studyMet, doneBlocks, totalBlocks, doneRoutines, totalRoutines };
+    }
+
+    function computeStreaks() {
+      const todayKey = getLocalDateKey();
+      const threshold = state.settings.streakThreshold || 80;
+      const allKeys = Object.keys(state.days || {}).sort();
+
+      // Calculate historical best streak across contiguous calendar days
+      let best = state.bestStreak || 0;
+      if (allKeys.length > 0) {
+        let cursor = allKeys[0];
+        let run = 0;
+        while (cursor <= todayKey) {
+          const snap = state.days[cursor];
+          const sc = snap ? calculateDayScore(snap).score : 0;
+          if (sc >= threshold) {
+            run += 1;
+            if (run > best) best = run;
+          } else if (cursor < todayKey) {
+            run = 0;
+          }
+          cursor = addDaysToKey(cursor, 1);
+        }
+      }
+
+      // Calculate current streak walking backwards from yesterday, plus today if >= threshold
+      let current = 0;
+      const todaySnap = state.days[todayKey];
+      const todayQualifies = todaySnap && calculateDayScore(todaySnap).score >= threshold;
+      if (todayQualifies) {
+        current += 1;
+      }
+
+      let checkKey = addDaysToKey(todayKey, -1);
+      while (state.days[checkKey]) {
+        const sc = calculateDayScore(state.days[checkKey]).score;
+        if (sc >= threshold) {
+          current += 1;
+          checkKey = addDaysToKey(checkKey, -1);
+        } else {
+          break;
+        }
+      }
+
+      if (current > best) best = current;
+      return { current, best };
+    }
+
+    /* ==========================================================================
+       DISCIPLINE NOTIFICATIONS & WARNINGS ENGINE
+       ========================================================================== */
+    function fireDisciplineNotification(notifId, title, body, urgent = false) {
+      const todayKey = getLocalDateKey();
+      if (!state.firedNotifications) state.firedNotifications = {};
+      if (!state.firedNotifications[todayKey]) state.firedNotifications[todayKey] = {};
+      if (state.firedNotifications[todayKey][notifId]) return;
+
+      state.firedNotifications[todayKey][notifId] = Date.now();
+      saveState();
+
+      playDisciplineChime(urgent);
+      showToast(`${title}: ${body}`, urgent ? 'danger' : 'default', 5000);
+
+      if ('Notification' in window && Notification.permission === 'granted') {
+        try {
+          new Notification(title, { body, tag: notifId });
+        } catch (e) {
+          // Ignore mobile browser restriction if ServiceWorker required
+        }
+      }
+    }
+
+    function runDisciplineMonitor() {
+      const todayKey = getLocalDateKey();
+      const snap = ensureDaySnapshot(state, todayKey);
+      const now = new Date();
+      const nowMin = getCurrentMinutesOfDay(now);
+      const strict = !!state.settings.strictMode;
+
+      snap.blocks.forEach(b => {
+        const startMin = timeToMinutes(b.start);
+        let endMin = timeToMinutes(b.end);
+        if (endMin < startMin) endMin += 24 * 60;
+        const deadlineMin = endMin + GRACE_MINUTES;
+
+        if (!b.done) {
+          // 1. 5 minutes before block starts
+          if (nowMin >= startMin - 5 && nowMin < startMin) {
+            fireDisciplineNotification(
+              `upcoming_${b.id}`,
+              'Upcoming Block (5m)',
+              `Get ready: "${b.title}" starts at ${b.start}.`,
+              false
+            );
+          }
+          // 2. Block just started
+          if (nowMin >= startMin && nowMin <= startMin + 2) {
+            fireDisciplineNotification(
+              `start_${b.id}`,
+              'Block Started',
+              `Time to start: "${b.title}" (${b.start}–${b.end}).`,
+              false
+            );
+          }
+          // 3. 15 minutes before grace deadline expires
+          if (strict && nowMin >= deadlineMin - 15 && nowMin < deadlineMin) {
+            fireDisciplineNotification(
+              `closing_${b.id}`,
+              'URGENT: Window Closing',
+              `Only ${deadlineMin - nowMin}m left to log "${b.title}" before it is marked Missed!`,
+              true
+            );
+          }
+          // 4. Block missed
+          if (strict && nowMin > deadlineMin) {
+            fireDisciplineNotification(
+              `missed_${b.id}`,
+              'MISSED BLOCK',
+              `You missed "${b.title}". Stay locked in on remaining tasks!`,
+              true
+            );
+          }
+        }
+      });
+
+      // 5. Evening streak protection check (21:00 or later)
+      if (nowMin >= 21 * 60) {
+        const stats = calculateDayScore(snap);
+        if (stats.neededForStreak > 0) {
+          fireDisciplineNotification(
+            'evening_streak_warn',
+            'Streak at Risk!',
+            `Complete ${stats.neededForStreak} more item(s) before midnight to hit ${state.settings.streakThreshold}%!`,
+            true
+          );
+        }
+      }
+    }
+
+    function getActiveWarningsList(snap) {
+      const warnings = [];
+      const todayKey = getLocalDateKey();
+      const nowMin = getCurrentMinutesOfDay();
+      const strict = !!state.settings.strictMode;
+      const stats = calculateDayScore(snap);
+
+      // Distraction banner from study session
+      if (lastDistractionBanner) {
+        warnings.push({
+          type: 'urgent',
+          text: lastDistractionBanner,
+          actionLabel: 'Dismiss',
+          actionFn: 'dismissDistractionBanner()'
+        });
+      }
+
+      // Expiring blocks within 20 minutes
+      if (strict) {
+        snap.blocks.forEach(b => {
+          if (b.done) return;
+          const startMin = timeToMinutes(b.start);
+          let endMin = timeToMinutes(b.end);
+          if (endMin < startMin) endMin += 24 * 60;
+          const deadlineMin = endMin + GRACE_MINUTES;
+          if (nowMin > endMin && nowMin <= deadlineMin && (deadlineMin - nowMin) <= 25) {
+            warnings.push({
+              type: 'urgent',
+              text: `Expiring soon: "${b.title}" closes in ${deadlineMin - nowMin} min!`
+            });
+          }
+        });
+
+        const missedCount = snap.blocks.filter(b => !b.done && nowMin > (timeToMinutes(b.end) + GRACE_MINUTES)).length;
+        if (missedCount > 0) {
+          warnings.push({
+            type: 'urgent',
+            text: `${missedCount} timetable block${missedCount > 1 ? 's' : ''} missed today. Protect your streak on remaining items!`
+          });
+        }
+      }
+
+      // Evening warning if streak not safe
+      if (nowMin >= 19 * 60 + 30 && stats.neededForStreak > 0) {
+        warnings.push({
+          type: 'warn',
+          text: `Evening Discipline Check: Complete ${stats.neededForStreak} more item(s) today to reach ${state.settings.streakThreshold}%.`
+        });
+      }
+
+      // Browser notification permission prompt if default
+      if ('Notification' in window && Notification.permission === 'default') {
+        warnings.push({
+          type: 'info',
+          text: 'Enable browser alerts so Daily Discipline can warn you before tasks expire.',
+          actionLabel: 'Enable Alerts',
+          actionFn: 'requestBrowserNotifications()'
+        });
+      }
+
+      return warnings;
+    }
+
+    function dismissDistractionBanner() {
+      lastDistractionBanner = null;
+      renderCurrentView();
+    }
+
+    async function requestBrowserNotifications() {
+      if (!('Notification' in window)) {
+        showToast('Browser notifications not supported on this device.', 'danger');
+        return;
+      }
+      try {
+        const perm = await Notification.requestPermission();
+        if (perm === 'granted') {
+          showToast('Discipline alerts enabled!', 'success');
+          playDisciplineChime(false);
+        } else {
+          showToast('Notification permission denied by browser.', 'danger');
+        }
+        renderCurrentView();
+      } catch (e) {
+        showToast('Could not request notification permission.', 'danger');
+      }
+    }
+
+    /* ==========================================================================
+       FOCUS TIMER & PAGE VISIBILITY ANTI-CHEATING
+       ========================================================================== */
+    function getElapsedTimerMs() {
+      const t = state.activeTimer;
+      if (!t) return 0;
+      if (!t.running || !t.startedAt) return t.accumulatedMs || 0;
+      return (t.accumulatedMs || 0) + Math.max(0, Date.now() - t.startedAt);
+    }
+
+    async function engageWakeLock() {
+      if ('wakeLock' in navigator && !wakeLockSentinel) {
+        try {
+          wakeLockSentinel = await navigator.wakeLock.request('screen');
+          wakeLockSentinel.addEventListener('release', () => {
+            wakeLockSentinel = null;
+          });
+        } catch (e) {
+          // Wake lock might fail on low battery or unsupported webviews
+        }
+      }
+    }
+
+    function releaseWakeLock() {
+      if (wakeLockSentinel) {
+        try {
+          wakeLockSentinel.release();
+        } catch (e) {}
+        wakeLockSentinel = null;
+      }
+    }
+
+    function startFocusTimer() {
+      const t = state.activeTimer;
+      if (t.running) return;
+      t.running = true;
+      t.startedAt = Date.now();
+      t.lastHiddenAt = null;
+      saveState();
+      engageWakeLock();
+      renderCurrentView();
+    }
+
+    function pauseFocusTimer() {
+      const t = state.activeTimer;
+      if (!t.running) return;
+      t.accumulatedMs = getElapsedTimerMs();
+      t.running = false;
+      t.startedAt = null;
+      saveState();
+      releaseWakeLock();
+      renderCurrentView();
+    }
+
+    function finishFocusTimer(autoCompleted = false) {
+      const t = state.activeTimer;
+      const elapsedMs = getElapsedTimerMs();
+      const elapsedSec = Math.floor(elapsedMs / 1000);
+      const strict = !!state.settings.strictMode;
+
+      t.running = false;
+      t.startedAt = null;
+      t.accumulatedMs = 0;
+      t.lastHiddenAt = null;
+      releaseWakeLock();
+
+      if (strict && elapsedSec < 300) {
+        const distractions = t.distractions || 0;
+        t.distractions = 0;
+        saveState();
+        playDisciplineChime(true);
+        showToast(`Discarded (${Math.floor(elapsedSec / 60)}m ${elapsedSec % 60}s): Sessions under 5 min are not logged in Strict Mode.`, 'danger', 4800);
+        renderCurrentView();
+        return;
+      }
+
+      const loggedMin = Math.max(1, Math.round(elapsedSec / 60));
+      const todayKey = getLocalDateKey();
+      const snap = getTodaySnapshot();
+      snap.studyMinutesLogged = (snap.studyMinutesLogged || 0) + loggedMin;
+
+      state.studySessions.push({
+        id: uid('sess'),
+        dateKey: todayKey,
+        semesterId: state.activeSemesterId,
+        subjectId: t.subjectId,
+        minutes: loggedMin,
+        distractions: t.distractions || 0,
+        endedAt: Date.now()
+      });
+
+      t.distractions = 0;
+      saveState();
+      playDisciplineChime(false);
+      showToast(
+        autoCompleted
+          ? `Focus block complete! +${loggedMin} min logged.`
+          : `Session saved: +${loggedMin} min logged.`,
+        'success',
+        4200
+      );
+      renderCurrentView();
+    }
+
+    function resetFocusTimer() {
+      if (!requireTwoTapConfirm('reset_timer', 'Tap Reset again to discard current timer')) return;
+      state.activeTimer.running = false;
+      state.activeTimer.startedAt = null;
+      state.activeTimer.accumulatedMs = 0;
+      state.activeTimer.distractions = 0;
+      state.activeTimer.lastHiddenAt = null;
+      releaseWakeLock();
+      saveState();
+      showToast('Timer discarded');
+      renderCurrentView();
+    }
+
+    document.addEventListener('visibilitychange', () => {
+      const t = state.activeTimer;
+      if (!t || !t.running) return;
+
+      if (document.hidden) {
+        t.lastHiddenAt = Date.now();
+        saveState();
+      } else {
+        engageWakeLock();
+        if (t.lastHiddenAt) {
+          const hiddenMs = Date.now() - t.lastHiddenAt;
+          t.lastHiddenAt = null;
+          if (state.settings.strictMode && hiddenMs > 45000) {
+            // Deduct hidden duration from elapsed study time
+            const currentTotal = getElapsedTimerMs();
+            const adjusted = Math.max(0, currentTotal - hiddenMs);
+            t.accumulatedMs = adjusted;
+            t.startedAt = Date.now();
+            t.distractions = (t.distractions || 0) + 1;
+            const hiddenSec = Math.round(hiddenMs / 1000);
+            lastDistractionBanner = `Distraction detected! You left the app for ${hiddenSec}s. Time deducted & +1 distraction logged.`;
+            playDisciplineChime(true);
+            showToast(lastDistractionBanner, 'danger', 6000);
+          }
+          saveState();
+          renderCurrentView();
+        }
+      }
+    });
+
+    /* ==========================================================================
+       NAVIGATION & VIEW RENDERING
+       ========================================================================== */
+    function switchTab(tabName) {
+      activeTab = tabName;
+      document.querySelectorAll('.nav-btn').forEach(btn => {
+        btn.classList.toggle('active', btn.dataset.tab === tabName);
+      });
+      renderCurrentView();
+      window.scrollTo({ top: 0, behavior: 'instant' });
+    }
+
+    function openSettings() {
+      const modal = document.getElementById('settings-modal');
+      modal.classList.add('open');
+      renderSettings();
+    }
+
+    function closeSettings() {
+      const modal = document.getElementById('settings-modal');
+      modal.classList.remove('open');
+      renderCurrentView();
+    }
+
+    function renderCurrentView() {
+      const app = document.getElementById('app');
+      if (!app) return;
+      ensureDaySnapshot(state, getLocalDateKey());
+
+      switch (activeTab) {
+        case 'today': app.innerHTML = renderTodayTab(); break;
+        case 'study': app.innerHTML = renderStudyTab(); break;
+        case 'body': app.innerHTML = renderBodyTab(); break;
+        case 'care': app.innerHTML = renderCareTab(); break;
+        case 'plan': app.innerHTML = renderPlanTab(); break;
+        case 'stats': app.innerHTML = renderStatsTab(); break;
+      }
+
+      if (document.getElementById('settings-modal').classList.contains('open')) {
+        renderSettings();
+      }
+    }
+
+    /* ==========================================================================
+       1. TODAY TAB RENDERER & ACTIONS
+       ========================================================================== */
+    function renderTodayTab() {
+      const todayKey = getLocalDateKey();
+      const snap = getTodaySnapshot();
+      const scoreInfo = calculateDayScore(snap);
+      const streaks = computeStreaks();
+      const warnings = getActiveWarningsList(snap);
+      const canSwitchTT = canSwitchTodayTimetable(snap);
+      const strict = !!state.settings.strictMode;
+
+      // SVG Ring Math
+      const radius = 48;
+      const circumference = 2 * Math.PI * radius;
+      const offset = circumference - (scoreInfo.score / 100) * circumference;
+      const threshold = state.settings.streakThreshold || 80;
+      const ringColor = scoreInfo.score >= threshold ? 'var(--success)' : 'var(--accent)';
+
+      // Upcoming Exams sorted by date
+      const upcomingExams = (state.exams || [])
+        .map(ex => {
+          const diffDays = Math.ceil((parseDateKey(ex.date) - parseDateKey(todayKey)) / 86400000);
+          return { ...ex, diffDays };
+        })
+        .filter(ex => ex.diffDays >= 0)
+        .sort((a, b) => a.diffDays - b.diffDays);
+
+      // Study Goal Progress
+      const studyLogged = snap.studyMinutesLogged || 0;
+      const studyGoal = snap.studyGoalMin || 90;
+      const studyPct = Math.min(100, Math.round((studyLogged / studyGoal) * 100));
+
+      // Group Routines by Morning, Night, Any time
+      const routineGroupsHtml = TIME_OF_DAY_GROUPS.map(tod => {
+        const items = snap.routines.filter(r => r.timeOfDay === tod);
+        if (items.length === 0) return '';
+        return `
+          <div class="mt-3">
+            <div class="text-xs font-bold text-muted" style="text-transform:uppercase; letter-spacing:0.05em; margin-bottom:6px;">${tod}</div>
+            ${items.map(r => {
+              const st = getRoutineStatus(r, todayKey);
+              return `
+                <div class="block-row ${r.done ? 'is-done' : ''}">
+                  <div style="min-width:0; flex:1;">
+                    <div class="block-title font-semi text-sm">${escapeHtml(r.name)}</div>
+                    <div class="row mt-1" style="flex-wrap:wrap;">
+                      <span class="badge badge-muted">${escapeHtml(r.group)}</span>
+                      <span class="badge ${st.badgeClass}">${st.label}</span>
+                    </div>
+                  </div>
+                  <button
+                    class="check-btn ${r.done ? 'checked' : ''}"
+                    ${st.canToggle ? '' : 'disabled'}
+                    onclick="toggleTodayRoutine('${r.id}')"
+                    aria-label="Toggle ${escapeHtml(r.name)}"
+                  >
+                    <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><polyline points="20 6 9 17 4 12"/></svg>
+                  </button>
+                </div>
+              `;
+            }).join('')}
+          </div>
+        `;
+      }).join('');
+
+      return `
+        <!-- Top Header -->
+        <header class="top-header">
+          <div>
+            <h1 style="font-size:22px; font-weight:700;">Daily Discipline</h1>
+            <div class="row mt-1" style="flex-wrap:wrap;">
+              <span class="text-xs text-secondary font-semi">${formatDisplayDate(todayKey)}</span>
+              ${strict
+                ? `<span class="badge badge-accent">Strict ON</span>`
+                : `<span class="badge badge-warning">Strict OFF</span>`
+              }
+            </div>
+          </div>
+          <button class="btn btn-icon" onclick="openSettings()" aria-label="Open Settings" title="Settings">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="3"/><path d="M19.4 15a1.65 1.65 0 0 0 .33 1.82l.06.06a2 2 0 0 1 0 2.83 2 2 0 0 1-2.83 0l-.06-.06a1.65 1.65 0 0 0-1.82-.33 1.65 1.65 0 0 0-1 1.51V21a2 2 0 0 1-2 2 2 2 0 0 1-2-2v-.09A1.65 1.65 0 0 0 9 19.4a1.65 1.65 0 0 0-1.82.33l-.06.06a2 2 0 0 1-2.83 0 2 2 0 0 1 0-2.83l.06-.06a1.65 1.65 0 0 0 .33-1.82 1.65 1.65 0 0 0-1.51-1H3a2 2 0 0 1-2-2 2 2 0 0 1 2-2h.09A1.65 1.65 0 0 0 4.6 9a1.65 1.65 0 0 0-.33-1.82l-.06-.06a2 2 0 0 1 0-2.83 2 2 0 0 1 2.83 0l.06.06a1.65 1.65 0 0 0 1.82.33H9a1.65 1.65 0 0 0 1-1.51V3a2 2 0 0 1 2-2 2 2 0 0 1 2 2v.09a1.65 1.65 0 0 0 1 1.51 1.65 1.65 0 0 0 1.82-.33l.06-.06a2 2 0 0 1 2.83 0 2 2 0 0 1 0 2.83l-.06.06a1.65 1.65 0 0 0-.33 1.82V9a1.65 1.65 0 0 0 1.51 1H21a2 2 0 0 1 2 2 2 2 0 0 1-2 2h-.09a1.65 1.65 0 0 0-1.51 1z"/></svg>
+          </button>
+        </header>
+
+        <!-- Sample Data Dismissible Notice -->
+        ${!state.sampleBannerDismissed ? `
+          <div class="banner banner-info">
+            <div>
+              <strong>Sample student schedule loaded</strong> — customize your timetables, subjects, and routines in Plan, Study & Care.
+            </div>
+            <button class="btn btn-sm btn-ghost" onclick="dismissSampleBanner()">Got it</button>
+          </div>
+        ` : ''}
+
+        <!-- Active Discipline Warnings / Alerts Strip -->
+        ${warnings.length > 0 ? `
+          <div class="alerts-stack">
+            ${warnings.map(w => `
+              <div class="alert-item ${w.type === 'urgent' ? 'urgent' : w.type === 'info' ? 'info' : ''}">
+                <div style="flex:1;">${escapeHtml(w.text)}</div>
+                ${w.actionLabel ? `<button class="btn btn-sm btn-primary" onclick="${w.actionFn}">${escapeHtml(w.actionLabel)}</button>` : ''}
+              </div>
+            `).join('')}
+          </div>
+        ` : ''}
+
+        <!-- Hero Progress Ring & Streaks Card -->
+        <section class="card">
+          <div class="hero-score-card">
+            <div class="ring-wrapper">
+              <svg width="116" height="116" viewBox="0 0 116 116">
+                <circle cx="58" cy="58" r="${radius}" fill="none" stroke="var(--bg-surface-2)" stroke-width="11" />
+                <circle
+                  cx="58" cy="58" r="${radius}" fill="none"
+                  stroke="${ringColor}" stroke-width="11"
+                  stroke-linecap="round"
+                  stroke-dasharray="${circumference}"
+                  stroke-dashoffset="${offset}"
+                  transform="rotate(-90 58 58)"
+                  style="transition: stroke-dashoffset 0.35s ease;"
+                />
+              </svg>
+              <div class="ring-center">
+                <span class="ring-pct">${scoreInfo.score}%</span>
+                <span class="ring-sub">${scoreInfo.completed}/${scoreInfo.total} done</span>
+              </div>
+            </div>
+            <div style="flex:1; min-width:0;">
+              <div class="streak-row">
+                <div class="streak-pill">🔥 <span>${streaks.current}d streak</span></div>
+                <div class="streak-pill">🏆 <span>Best ${streaks.best}d</span></div>
+              </div>
+              ${scoreInfo.neededForStreak === 0
+                ? `<div class="text-sm font-bold" style="color:var(--success);">✓ Streak safe for today (${threshold}%+ met)</div>`
+                : `<div class="text-sm font-semi">Complete <strong>${scoreInfo.neededForStreak} more item${scoreInfo.neededForStreak > 1 ? 's' : ''}</strong> to hit ${threshold}% and keep your streak.</div>`
+              }
+              <div class="text-xs text-muted mt-1">
+                Snapshot locked for today • Edits apply tomorrow
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <!-- Exam Countdown Chips -->
+        ${upcomingExams.length > 0 ? `
+          <div class="chips-scroll" aria-label="Upcoming Exams">
+            ${upcomingExams.map(ex => `
+              <div class="exam-chip">
+                <span class="badge ${ex.diffDays <= 5 ? 'badge-danger' : 'badge-accent'}">
+                  ${ex.diffDays === 0 ? 'TODAY' : `D-${ex.diffDays}`}
+                </span>
+                <span>${escapeHtml(ex.name)}</span>
+              </div>
+            `).join('')}
+          </div>
+        ` : ''}
+
+        <!-- Today's Study Goal Bar -->
+        <section class="card">
+          <div class="row-between mb-2">
+            <div class="card-title" style="font-size:15px;">
+              📚 Daily Study Goal
+            </div>
+            <span class="badge ${scoreInfo.studyMet ? 'badge-success' : 'badge-accent'}">
+              ${studyLogged} / ${studyGoal} min
+            </span>
+          </div>
+          <div class="progress-track mb-2">
+            <div class="progress-fill ${scoreInfo.studyMet ? 'success' : ''}" style="width:${studyPct}%"></div>
+          </div>
+          <div class="row-between">
+            <span class="text-xs text-muted">
+              ${scoreInfo.studyMet ? 'Counts +1 toward today’s score!' : `${studyGoal - studyLogged} min remaining to earn today’s study point`}
+            </span>
+            <button class="btn btn-sm btn-primary" onclick="switchTab('study')">Focus Timer &rarr;</button>
+          </div>
+        </section>
+
+        <!-- Today's Timetable -->
+        <section class="card">
+          <div class="card-header" style="flex-wrap:wrap;">
+            <div>
+              <h2 class="card-title">Today's Timetable</h2>
+              <div class="text-xs text-muted mt-1">Active: <strong>${escapeHtml(snap.timetableName)}</strong></div>
+            </div>
+            <div>
+              <select
+                class="select"
+                style="min-height:38px; padding:4px 10px; font-size:13px;"
+                ${canSwitchTT ? '' : 'disabled'}
+                onchange="switchTodayTimetable(this.value)"
+                title="${canSwitchTT ? 'Switch timetable mode for today' : 'Locked once any task or study time is logged today'}"
+              >
+                ${Object.values(state.timetables).map(tt => `
+                  <option value="${tt.id}" ${tt.id === snap.timetableId ? 'selected' : ''}>${escapeHtml(tt.name)}</option>
+                `).join('')}
+              </select>
+            </div>
+          </div>
+          ${!canSwitchTT ? `<div class="text-xs text-muted mb-2">🔒 Mode locked because activity has started today.</div>` : ''}
+          <div>
+            ${snap.blocks.map(b => {
+              const win = getBlockWindowStatus(b, todayKey);
+              return `
+                <div class="block-row ${win.isCurrent ? 'is-current' : ''} ${b.done ? 'is-done' : ''} ${win.status === 'missed' ? 'is-missed' : ''}">
+                  <div style="min-width:0; flex:1;">
+                    <div class="row" style="gap:6px; flex-wrap:wrap;">
+                      <span class="text-xs font-bold text-secondary">${b.start} – ${b.end}</span>
+                      <span class="badge cat-${b.category}">${b.category}</span>
+                      <span class="badge ${win.badgeClass}">${win.label}</span>
+                    </div>
+                    <div class="block-title font-semi mt-1">${escapeHtml(b.title)}</div>
+                  </div>
+                  <button
+                    class="check-btn ${b.done ? 'checked' : ''}"
+                    ${win.canToggle ? '' : 'disabled'}
+                    onclick="toggleTodayBlock('${b.id}')"
+                    aria-label="Mark ${escapeHtml(b.title)} done"
+                  >
+                    <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><polyline points="20 6 9 17 4 12"/></svg>
+                  </button>
+                </div>
+              `;
+            }).join('')}
+          </div>
+        </section>
+
+        <!-- Today's Routines Due -->
+        <section class="card">
+          <div class="card-header">
+            <h2 class="card-title">Routines Due Today</h2>
+            <span class="badge badge-muted">${scoreInfo.doneRoutines}/${scoreInfo.totalRoutines}</span>
+          </div>
+          ${snap.routines.length === 0
+            ? `<p class="text-sm text-muted">No routines scheduled for today.</p>`
+            : routineGroupsHtml
+          }
+        </section>
+      `;
+    }
+
+    function dismissSampleBanner() {
+      state.sampleBannerDismissed = true;
+      saveState();
+      renderCurrentView();
+    }
+
+    function toggleTodayBlock(blockId) {
+      const todayKey = getLocalDateKey();
+      const snap = getTodaySnapshot();
+      const block = snap.blocks.find(b => b.id === blockId);
+      if (!block) return;
+
+      const win = getBlockWindowStatus(block, todayKey);
+      if (!win.canToggle) {
+        showToast(`Cannot change: ${win.label}`, 'danger');
+        return;
+      }
+
+      if (!block.done) {
+        block.done = true;
+        block.doneAt = Date.now();
+        playDisciplineChime(false);
+        showToast(state.settings.strictMode ? 'Done! 30s window to undo if accidental.' : 'Block completed!', 'success');
+      } else {
+        block.done = false;
+        block.doneAt = null;
+        showToast('Unmarked block');
+      }
+
+      saveState();
+      renderCurrentView();
+    }
+
+    function toggleTodayRoutine(routineId) {
+      const todayKey = getLocalDateKey();
+      const snap = getTodaySnapshot();
+      const routine = snap.routines.find(r => r.id === routineId);
+      if (!routine) return;
+
+      const st = getRoutineStatus(routine, todayKey);
+      if (!st.canToggle) {
+        showToast('Locked: 30-second undo window has expired.', 'danger');
+        return;
+      }
+
+      if (!routine.done) {
+        routine.done = true;
+        routine.doneAt = Date.now();
+        playDisciplineChime(false);
+        showToast(state.settings.strictMode ? 'Routine logged! 30s to undo.' : 'Routine completed!', 'success');
+      } else {
+        routine.done = false;
+        routine.doneAt = null;
+        showToast('Routine unmarked');
+      }
+
+      saveState();
+      renderCurrentView();
+    }
+
+    /* ==========================================================================
+       2. STUDY TAB RENDERER & ACTIONS
+       ========================================================================== */
+    function getStartOfWeekKey(dateKey) {
+      const dt = parseDateKey(dateKey);
+      const day = dt.getDay(); // 0=Sun..6=Sat
+      const diffToMon = (day === 0 ? -6 : 1 - day);
+      dt.setDate(dt.getDate() + diffToMon);
+      return getLocalDateKey(dt);
+    }
+
+    function renderStudyTab() {
+      const activeSem = state.semesters.find(s => s.id === state.activeSemesterId) || state.semesters[0];
+      const subjects = activeSem ? activeSem.subjects : [];
+      const t = state.activeTimer;
+      if (!subjects.some(s => s.id === t.subjectId) && subjects.length > 0) {
+        t.subjectId = subjects[0].id;
+      }
+
+      const elapsedMs = getElapsedTimerMs();
+      const elapsedSec = Math.floor(elapsedMs / 1000);
+      const targetSec = (t.modeMinutes || 0) * 60;
+      const displaySec = targetSec > 0 ? Math.max(0, targetSec - elapsedSec) : elapsedSec;
+
+      // Weekly minutes per subject (Mon-Sun)
+      const weekStartKey = getStartOfWeekKey(getLocalDateKey());
+      const weekEndKey = addDaysToKey(weekStartKey, 6);
+      const subjectMinsMap = {};
+      (state.studySessions || []).forEach(sess => {
+        if (sess.dateKey >= weekStartKey && sess.dateKey <= weekEndKey) {
+          subjectMinsMap[sess.subjectId] = (subjectMinsMap[sess.subjectId] || 0) + (sess.minutes || 0);
+        }
+      });
+
+      const wakeLockSupported = 'wakeLock' in navigator;
+
+      return `
+        <header class="top-header">
+          <div>
+            <h1 style="font-size:22px; font-weight:700;">Deep Study</h1>
+            <div class="text-xs text-muted mt-1">Timestamp-accurate focus timer & syllabus goals</div>
+          </div>
+          ${state.settings.strictMode ? `<span class="badge badge-accent">Strict Anti-Cheat ON</span>` : ''}
+        </header>
+
+        <!-- Focus Timer Card -->
+        <section class="card">
+          <div class="row-between mb-2">
+            <span class="card-title">Focus Timer</span>
+            <span class="badge ${wakeLockSupported ? 'badge-success' : 'badge-muted'}">
+              ${wakeLockSupported ? 'Screen Wake Lock Ready' : 'Keep Screen On Manually'}
+            </span>
+          </div>
+
+          <label class="field-label" for="study-subject-select">Subject</label>
+          <select
+            id="study-subject-select"
+            class="select mb-3"
+            ${t.running || elapsedSec > 0 ? 'disabled' : ''}
+            onchange="setTimerSubject(this.value)"
+          >
+            ${subjects.length === 0
+              ? `<option value="">Add a subject below first</option>`
+              : subjects.map(sub => `<option value="${sub.id}" ${sub.id === t.subjectId ? 'selected' : ''}>${escapeHtml(sub.name)}</option>`).join('')
+            }
+          </select>
+
+          <label class="field-label">Session Length</label>
+          <div class="pill-group">
+            ${[0, 25, 50, 90].map(m => `
+              <button
+                class="pill-choice ${t.modeMinutes === m ? 'active' : ''}"
+                ${t.running || elapsedSec > 0 ? 'disabled' : ''}
+                onclick="setTimerMode(${m})"
+              >${m === 0 ? 'Free' : `${m}m`}</button>
+            `).join('')}
+          </div>
+
+          <div id="focus-timer-clock" class="timer-display">${formatDurationMMSS(displaySec)}</div>
+
+          <div class="row-between text-xs text-muted mb-3">
+            <span>Elapsed: <strong id="focus-timer-elapsed">${Math.floor(elapsedSec / 60)}m ${elapsedSec % 60}s</strong></span>
+            <span>Distractions: <strong style="color:${t.distractions > 0 ? 'var(--danger)' : 'inherit'};">${t.distractions || 0}</strong></span>
+          </div>
+
+          <div class="grid-2">
+            ${!t.running
+              ? `<button class="btn btn-primary" onclick="startFocusTimer()" ${subjects.length === 0 ? 'disabled' : ''}>${elapsedSec > 0 ? '▶ Resume' : '▶ Start Focus'}</button>`
+              : `<button class="btn" onclick="pauseFocusTimer()">⏸ Pause</button>`
+            }
+            <button class="btn btn-success" onclick="finishFocusTimer(false)" ${elapsedSec === 0 ? 'disabled' : ''}>✓ Log Session</button>
+          </div>
+          ${elapsedSec > 0 ? `
+            <button class="btn btn-sm btn-ghost mt-2" style="width:100%; color:var(--danger);" onclick="resetFocusTimer()">
+              ${pendingConfirmKey === 'reset_timer' ? 'Tap again to confirm discard' : 'Discard Timer'}
+            </button>
+          ` : ''}
+
+          ${state.settings.strictMode ? `
+            <div class="text-xs text-muted mt-2" style="text-align:center;">
+              Strict rules: Leaving app &gt;45s deducts time + logs distraction. Sessions &lt;5 min are discarded.
+            </div>
+          ` : ''}
+        </section>
+
+        <!-- Weekly Progress Per Subject -->
+        <section class="card">
+          <div class="card-header">
+            <h2 class="card-title">Weekly Subject Progress</h2>
+            <span class="text-xs text-muted">Mon–Sun</span>
+          </div>
+          ${subjects.length === 0
+            ? `<p class="text-sm text-muted">No subjects in this semester yet.</p>`
+            : subjects.map(sub => {
+              const mins = subjectMinsMap[sub.id] || 0;
+              const goalMins = (sub.weeklyGoalHours || 1) * 60;
+              const pct = Math.min(100, Math.round((mins / goalMins) * 100));
+              const hrsText = (mins / 60).toFixed(1);
+              return `
+                <div class="mb-3">
+                  <div class="row-between text-sm mb-1">
+                    <span class="font-semi">${escapeHtml(sub.name)}</span>
+                    <span class="text-xs font-bold ${pct >= 100 ? '' : 'text-secondary'}" style="${pct >= 100 ? 'color:var(--success);' : ''}">
+                      ${hrsText}h / ${sub.weeklyGoalHours}h (${pct}%)
+                    </span>
+                  </div>
+                  <div class="progress-track">
+                    <div class="progress-fill ${pct >= 100 ? 'success' : ''}" style="width:${pct}%"></div>
+                  </div>
+                </div>
+              `;
+            }).join('')
+          }
+        </section>
+
+        <!-- Semesters & Subjects Manager -->
+        <section class="card">
+          <div class="card-header">
+            <h2 class="card-title">Semesters & Subjects</h2>
+            <button class="btn btn-sm btn-primary" onclick="createSemester()">+ Semester</button>
+          </div>
+
+          <div class="row mb-2">
+            <select class="select" onchange="switchSemester(this.value)">
+              ${state.semesters.map(s => `
+                <option value="${s.id}" ${s.id === activeSem.id ? 'selected' : ''}>${escapeHtml(s.name)}</option>
+              `).join('')}
+            </select>
+            ${state.semesters.length > 1 ? `
+              <button class="btn btn-sm btn-danger-outline" onclick="deleteActiveSemester()">
+                ${pendingConfirmKey === 'del_sem' ? 'Confirm' : 'Delete'}
+              </button>
+            ` : ''}
+          </div>
+
+          ${activeSem ? `
+            <div class="mb-3">
+              <label class="field-label">Rename Active Semester</label>
+              <input
+                class="input"
+                type="text"
+                value="${escapeHtml(activeSem.name)}"
+                onchange="renameActiveSemester(this.value)"
+              />
+            </div>
+
+            <div class="text-xs font-bold text-muted mb-2" style="text-transform:uppercase;">Subjects & Weekly Hour Goals</div>
+            ${activeSem.subjects.map(sub => `
+              <div class="row mb-2">
+                <input
+                  class="input"
+                  style="flex:2;"
+                  type="text"
+                  value="${escapeHtml(sub.name)}"
+                  onchange="updateSubject('${sub.id}', 'name', this.value)"
+                  aria-label="Subject name"
+                />
+                <input
+                  class="input"
+                  style="width:76px;"
+                  type="number"
+                  min="1"
+                  max="60"
+                  value="${sub.weeklyGoalHours}"
+                  onchange="updateSubject('${sub.id}', 'weeklyGoalHours', this.value)"
+                  aria-label="Weekly goal hours"
+                />
+                <span class="text-xs text-muted">h/wk</span>
+                <button class="btn btn-icon btn-ghost" style="color:var(--danger);" onclick="removeSubject('${sub.id}')" aria-label="Remove subject">✕</button>
+              </div>
+            `).join('')}
+
+            <form class="row mt-2" onsubmit="addSubject(event)">
+              <input id="new-sub-name" class="input" style="flex:2;" type="text" placeholder="New subject name..." required />
+              <input id="new-sub-hours" class="input" style="width:76px;" type="number" min="1" max="60" value="4" required />
+              <button type="submit" class="btn btn-primary">Add</button>
+            </form>
+          ` : ''}
+        </section>
+
+        <!-- Exam Dates Manager -->
+        <section class="card">
+          <div class="card-header">
+            <h2 class="card-title">Upcoming Exam Dates</h2>
+          </div>
+          ${(state.exams || []).length === 0
+            ? `<p class="text-sm text-muted mb-2">No exams added yet.</p>`
+            : state.exams
+                .slice()
+                .sort((a, b) => a.date.localeCompare(b.date))
+                .map(ex => {
+                  const diff = Math.ceil((parseDateKey(ex.date) - parseDateKey(getLocalDateKey())) / 86400000);
+                  return `
+                    <div class="block-row">
+                      <div>
+                        <div class="font-semi text-sm">${escapeHtml(ex.name)}</div>
+                        <div class="text-xs text-muted">${ex.date} (${diff >= 0 ? `in ${diff} days` : 'Passed'})</div>
+                      </div>
+                      <button class="btn btn-sm btn-ghost" style="color:var(--danger);" onclick="removeExam('${ex.id}')">Remove</button>
+                    </div>
+                  `;
+                }).join('')
+          }
+          <form class="grid-3 mt-3" style="grid-template-columns: 1.5fr 1.2fr auto;" onsubmit="addExam(event)">
+            <input id="new-exam-name" class="input" type="text" placeholder="Exam / Subject" required />
+            <input id="new-exam-date" class="input" type="date" value="${addDaysToKey(getLocalDateKey(), 14)}" required />
+            <button type="submit" class="btn btn-primary">Add</button>
+          </form>
+        </section>
+      `;
+    }
+
+    function setTimerSubject(subId) {
+      state.activeTimer.subjectId = subId;
+      saveState();
+    }
+
+    function setTimerMode(mins) {
+      state.activeTimer.modeMinutes = mins;
+      saveState();
+      renderCurrentView();
+    }
+
+    function createSemester() {
+      const newSem = {
+        id: uid('sem'),
+        name: `Semester ${state.semesters.length + 1}`,
+        subjects: [{ id: uid('sub'), name: 'Core Subject 1', weeklyGoalHours: 5 }]
+      };
+      state.semesters.push(newSem);
+      state.activeSemesterId = newSem.id;
+      state.activeTimer.subjectId = newSem.subjects[0].id;
+      saveState();
+      showToast('Created new semester', 'success');
+      renderCurrentView();
+    }
+
+    function switchSemester(semId) {
+      state.activeSemesterId = semId;
+      const sem = state.semesters.find(s => s.id === semId);
+      if (sem && sem.subjects.length > 0 && !state.activeTimer.running) {
+        state.activeTimer.subjectId = sem.subjects[0].id;
+      }
+      saveState();
+      renderCurrentView();
+    }
+
+    function renameActiveSemester(newName) {
+      const trimmed = newName.trim();
+      if (!trimmed) return;
+      const sem = state.semesters.find(s => s.id === state.activeSemesterId);
+      if (sem) {
+        sem.name = trimmed;
+        saveState();
+        showToast('Semester renamed');
+      }
+    }
+
+    function deleteActiveSemester() {
+      if (state.semesters.length <= 1) return;
+      if (!requireTwoTapConfirm('del_sem', 'Tap Delete again to remove this semester')) return;
+      state.semesters = state.semesters.filter(s => s.id !== state.activeSemesterId);
+      state.activeSemesterId = state.semesters[0].id;
+      saveState();
+      showToast('Semester deleted');
+      renderCurrentView();
+    }
+
+    function addSubject(e) {
+      e.preventDefault();
+      const nameEl = document.getElementById('new-sub-name');
+      const hrsEl = document.getElementById('new-sub-hours');
+      const name = nameEl.value.trim();
+      const hrs = Math.max(1, Number(hrsEl.value) || 4);
+      if (!name) return;
+
+      const sem = state.semesters.find(s => s.id === state.activeSemesterId);
+      if (!sem) return;
+      const sub = { id: uid('sub'), name, weeklyGoalHours: hrs };
+      sem.subjects.push(sub);
+      if (!state.activeTimer.subjectId) state.activeTimer.subjectId = sub.id;
+      saveState();
+      showToast(`Added "${name}"`, 'success');
+      renderCurrentView();
+    }
+
+    function updateSubject(subId, field, value) {
+      const sem = state.semesters.find(s => s.id === state.activeSemesterId);
+      if (!sem) return;
+      const sub = sem.subjects.find(s => s.id === subId);
+      if (!sub) return;
+      if (field === 'name' && value.trim()) sub.name = value.trim();
+      if (field === 'weeklyGoalHours') sub.weeklyGoalHours = Math.max(1, Number(value) || 1);
+      saveState();
+      renderCurrentView();
+    }
+
+    function removeSubject(subId) {
+      const sem = state.semesters.find(s => s.id === state.activeSemesterId);
+      if (!sem) return;
+      sem.subjects = sem.subjects.filter(s => s.id !== subId);
+      saveState();
+      showToast('Subject removed');
+      renderCurrentView();
+    }
+
+    function addExam(e) {
+      e.preventDefault();
+      const name = document.getElementById('new-exam-name').value.trim();
+      const date = document.getElementById('new-exam-date').value;
+      if (!name || !date) return;
+      state.exams.push({ id: uid('ex'), name, date });
+      saveState();
+      showToast('Exam added', 'success');
+      renderCurrentView();
+    }
+
+    function removeExam(id) {
+      state.exams = state.exams.filter(ex => ex.id !== id);
+      saveState();
+      showToast('Exam removed');
+      renderCurrentView();
+    }
+
+    /* ==========================================================================
+       3. BODY TAB RENDERER & ACTIONS (GYM, DIET, WATER, WEIGHT)
+       ========================================================================== */
+    function renderBodyTab() {
+      const todayKey = getLocalDateKey();
+      const snap = getTodaySnapshot();
+
+      // Gym stats
+      const todayGym = (state.gymLogs || []).filter(g => g.dateKey === todayKey);
+      const todayVolume = todayGym.reduce((sum, g) => sum + (g.sets * g.reps * g.kg), 0);
+
+      const sevenDaysAgo = addDaysToKey(todayKey, -6);
+      const gymDaySet = new Set(
+        (state.gymLogs || [])
+          .filter(g => g.dateKey >= sevenDaysAgo && g.dateKey <= todayKey)
+          .map(g => g.dateKey)
+      );
+
+      // Unique past exercises for autocomplete
+      const pastExercises = Array.from(new Set((state.gymLogs || []).map(g => g.exercise))).sort();
+
+      // Historical max per exercise BEFORE each log entry (or current best)
+      const exerciseBestMap = {};
+      (state.gymLogs || []).forEach(g => {
+        const key = g.exercise.trim().toLowerCase();
+        if (!exerciseBestMap[key] || g.kg > exerciseBestMap[key]) {
+          exerciseBestMap[key] = g.kg;
+        }
+      });
+
+      // Diet stats
+      const todayDiet = (state.dietLogs || []).filter(d => d.dateKey === todayKey);
+      const totalKcal = todayDiet.reduce((s, d) => s + (d.kcal || 0), 0);
+      const totalProtein = todayDiet.reduce((s, d) => s + (d.protein || 0), 0);
+      const kcalTarget = state.settings.dailyCaloriesTarget || 2400;
+      const protTarget = state.settings.dailyProteinTarget || 140;
+      const kcalPct = Math.min(100, Math.round((totalKcal / kcalTarget) * 100));
+      const protPct = Math.min(100, Math.round((totalProtein / protTarget) * 100));
+
+      // Water
+      const waterCount = snap.waterGlasses || 0;
+      const waterTarget = state.settings.dailyWaterTarget || 8;
+
+      // Weight Log (sorted chronological, last 30)
+      const weights = (state.weightLogs || [])
+        .slice()
+        .sort((a, b) => a.dateKey.localeCompare(b.dateKey))
+        .slice(-30);
+      const todayWeightObj = weights.find(w => w.dateKey === todayKey);
+      const netWeightChange = weights.length >= 2
+        ? (weights[weights.length - 1].kg - weights[0].kg).toFixed(1)
+        : null;
+
+      return `
+        <header class="top-header">
+          <div>
+            <h1 style="font-size:22px; font-weight:700;">Body & Fuel</h1>
+            <div class="text-xs text-muted mt-1">Strength progression, macros, hydration & weight</div>
+          </div>
+        </header>
+
+        <!-- GYM LOG -->
+        <section class="card">
+          <div class="card-header">
+            <h2 class="card-title">🏋️ Gym Log</h2>
+            <div class="row">
+              <span class="badge badge-accent">${todayVolume.toLocaleString()} kg vol</span>
+              <span class="badge badge-success">${gymDaySet.size}d / 7d</span>
+            </div>
+          </div>
+
+          <form onsubmit="addGymLog(event)">
+            <div class="mb-2">
+              <label class="field-label" for="gym-ex">Exercise</label>
+              <input id="gym-ex" class="input" list="exercise-suggestions" placeholder="e.g. Bench Press, Squat, Lat Pulldown" required />
+              <datalist id="exercise-suggestions">
+                ${pastExercises.map(ex => `<option value="${escapeHtml(ex)}">`).join('')}
+              </datalist>
+            </div>
+            <div class="grid-3 mb-2">
+              <div>
+                <label class="field-label" for="gym-sets">Sets</label>
+                <input id="gym-sets" class="input" type="number" min="1" max="30" value="3" required />
+              </div>
+              <div>
+                <label class="field-label" for="gym-reps">Reps</label>
+                <input id="gym-reps" class="input" type="number" min="1" max="100" value="10" required />
+              </div>
+              <div>
+                <label class="field-label" for="gym-kg">Weight (kg)</label>
+                <input id="gym-kg" class="input" type="number" step="0.5" min="0" max="500" placeholder="60" required />
+              </div>
+            </div>
+            <button type="submit" class="btn btn-primary" style="width:100%;">+ Log Exercise</button>
+          </form>
+
+          ${todayGym.length > 0 ? `
+            <div class="mt-3">
+              <div class="text-xs font-bold text-muted mb-2" style="text-transform:uppercase;">Today's Lifts</div>
+              ${todayGym.map(g => `
+                <div class="block-row">
+                  <div>
+                    <div class="row">
+                      <span class="font-semi text-sm">${escapeHtml(g.exercise)}</span>
+                      ${g.isNewBest ? `<span class="badge badge-warning">★ New best!</span>` : ''}
+                    </div>
+                    <div class="text-xs text-secondary mt-1">
+                      ${g.sets} sets × ${g.reps} reps @ <strong>${g.kg} kg</strong> (${(g.sets * g.reps * g.kg).toLocaleString()} kg)
+                    </div>
+                  </div>
+                  <button class="btn btn-sm btn-ghost" style="color:var(--danger);" onclick="deleteGymLog('${g.id}')">✕</button>
+                </div>
+              `).join('')}
+            </div>
+          ` : `<p class="text-xs text-muted mt-3">No sets logged today yet.</p>`}
+        </section>
+
+        <!-- DIET TRACKER -->
+        <section class="card">
+          <div class="card-header">
+            <h2 class="card-title">🥗 Diet & Macros</h2>
+          </div>
+
+          <div class="mb-2">
+            <div class="row-between text-xs font-bold mb-1">
+              <span>Calories</span>
+              <span>${totalKcal} / ${kcalTarget} kcal</span>
+            </div>
+            <div class="progress-track">
+              <div class="progress-fill ${kcalPct >= 90 && kcalPct <= 110 ? 'success' : ''}" style="width:${kcalPct}%"></div>
+            </div>
+          </div>
+
+          <div class="mb-3">
+            <div class="row-between text-xs font-bold mb-1">
+              <span>Protein</span>
+              <span>${totalProtein} / ${protTarget} g</span>
+            </div>
+            <div class="progress-track">
+              <div class="progress-fill ${protPct >= 100 ? 'success' : ''}" style="width:${protPct}%"></div>
+            </div>
+          </div>
+
+          <form onsubmit="addDietLog(event)">
+            <div class="grid-3 mb-2" style="grid-template-columns: 1.6fr 1fr 1fr;">
+              <input id="diet-name" class="input" type="text" placeholder="Meal (e.g. Chicken & rice)" required />
+              <input id="diet-kcal" class="input" type="number" min="0" max="5000" placeholder="kcal" required />
+              <input id="diet-prot" class="input" type="number" min="0" max="500" placeholder="Protein g" required />
+            </div>
+            <button type="submit" class="btn btn-primary" style="width:100%;">+ Log Meal</button>
+          </form>
+
+          ${todayDiet.length > 0 ? `
+            <div class="mt-3">
+              ${todayDiet.map(d => `
+                <div class="block-row">
+                  <div>
+                    <div class="font-semi text-sm">${escapeHtml(d.name)}</div>
+                    <div class="text-xs text-muted">${d.kcal} kcal • <strong>${d.protein}g</strong> protein</div>
+                  </div>
+                  <button class="btn btn-sm btn-ghost" style="color:var(--danger);" onclick="deleteDietLog('${d.id}')">✕</button>
+                </div>
+              `).join('')}
+            </div>
+          ` : ''}
+        </section>
+
+        <!-- WATER COUNTER -->
+        <section class="card">
+          <div class="card-header">
+            <h2 class="card-title">💧 Water Intake</h2>
+            <span class="badge ${waterCount >= waterTarget ? 'badge-success' : 'badge-accent'}">${waterCount} / ${waterTarget} glasses</span>
+          </div>
+          <div class="row" style="flex-wrap:wrap; gap:6px; margin-bottom:12px;">
+            ${Array.from({ length: Math.max(waterTarget, waterCount) }).map((_, i) => `
+              <div style="width:26px; height:32px; border-radius:6px; border:1.5px solid var(--accent); background:${i < waterCount ? 'var(--accent)' : 'transparent'}; opacity:${i < waterCount ? 1 : 0.35};"></div>
+            `).join('')}
+          </div>
+          <div class="grid-2">
+            <button class="btn" onclick="adjustWater(-1)" ${waterCount <= 0 ? 'disabled' : ''}>−1 Glass</button>
+            <button class="btn btn-primary" onclick="adjustWater(1)">+1 Glass</button>
+          </div>
+        </section>
+
+        <!-- WEIGHT LOG & SVG CHART -->
+        <section class="card">
+          <div class="card-header">
+            <h2 class="card-title">⚖️ Bodyweight (Last 30)</h2>
+            ${netWeightChange !== null ? `
+              <span class="badge ${Number(netWeightChange) <= 0 ? 'badge-success' : 'badge-accent'}">
+                ${Number(netWeightChange) > 0 ? '+' : ''}${netWeightChange} kg net
+              </span>
+            ` : ''}
+          </div>
+
+          <form class="row mb-3" onsubmit="saveTodayWeight(event)">
+            <input
+              id="weight-input"
+              class="input"
+              type="number"
+              step="0.1"
+              min="25"
+              max="350"
+              placeholder="Today's weight (kg)"
+              value="${todayWeightObj ? todayWeightObj.kg : ''}"
+              required
+            />
+            <button type="submit" class="btn btn-primary">${todayWeightObj ? 'Update' : 'Save'}</button>
+          </form>
+
+          ${renderWeightSvgChart(weights)}
+        </section>
+      `;
+    }
+
+    function renderWeightSvgChart(weights) {
+      if (weights.length < 2) {
+        return `<p class="text-xs text-muted">Log at least 2 days of weight to view your trend chart.</p>`;
+      }
+      const W = 480;
+      const H = 150;
+      const padL = 38;
+      const padR = 14;
+      const padT = 16;
+      const padB = 26;
+
+      const vals = weights.map(w => w.kg);
+      const minV = Math.min(...vals) - 0.5;
+      const maxV = Math.max(...vals) + 0.5;
+      const span = Math.max(0.5, maxV - minV);
+
+      const pts = weights.map((w, idx) => {
+        const x = padL + (idx / (weights.length - 1)) * (W - padL - padR);
+        const y = padT + (1 - (w.kg - minV) / span) * (H - padT - padB);
+        return { x, y, kg: w.kg, dateKey: w.dateKey };
+      });
+
+      const polylinePoints = pts.map(p => `${p.x.toFixed(1)},${p.y.toFixed(1)}`).join(' ');
+
+      return `
+        <svg viewBox="0 0 ${W} ${H}" style="width:100%; height:auto; display:block; overflow:visible;">
+          <line x1="${padL}" y1="${padT}" x2="${W - padR}" y2="${padT}" stroke="var(--border)" stroke-dasharray="3 3"/>
+          <line x1="${padL}" y1="${H - padB}" x2="${W - padR}" y2="${H - padB}" stroke="var(--border)"/>
+          <text x="2" y="${padT + 4}" fill="var(--text-muted)" font-size="10">${maxV.toFixed(1)}</text>
+          <text x="2" y="${H - padB}" fill="var(--text-muted)" font-size="10">${minV.toFixed(1)}</text>
+          <polyline fill="none" stroke="var(--accent)" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" points="${polylinePoints}" />
+          ${pts.map(p => `
+            <circle cx="${p.x.toFixed(1)}" cy="${p.y.toFixed(1)}" r="3.8" fill="var(--bg-surface)" stroke="var(--accent)" stroke-width="2.2" />
+          `).join('')}
+          <text x="${padL}" y="${H - 6}" fill="var(--text-muted)" font-size="10">${weights[0].dateKey.slice(5)}</text>
+          <text x="${W - padR - 32}" y="${H - 6}" fill="var(--text-muted)" font-size="10">${weights[weights.length - 1].dateKey.slice(5)}</text>
+        </svg>
+      `;
+    }
+
+    function addGymLog(e) {
+      e.preventDefault();
+      const exercise = document.getElementById('gym-ex').value.trim();
+      const sets = Math.max(1, Number(document.getElementById('gym-sets').value) || 1);
+      const reps = Math.max(1, Number(document.getElementById('gym-reps').value) || 1);
+      const kg = Math.max(0, Number(document.getElementById('gym-kg').value) || 0);
+      if (!exercise) return;
+
+      const norm = exercise.toLowerCase();
+      const prevBest = (state.gymLogs || [])
+        .filter(g => g.exercise.trim().toLowerCase() === norm)
+        .reduce((max, g) => Math.max(max, g.kg), 0);
+
+      const isNewBest = kg > prevBest && kg > 0;
+
+      state.gymLogs.push({
+        id: uid('gym'),
+        dateKey: getLocalDateKey(),
+        exercise,
+        sets,
+        reps,
+        kg,
+        isNewBest
+      });
+      saveState();
+      showToast(isNewBest ? `★ New best on ${exercise}: ${kg} kg!` : `Logged ${exercise}`, 'success');
+      renderCurrentView();
+    }
+
+    function deleteGymLog(id) {
+      state.gymLogs = state.gymLogs.filter(g => g.id !== id);
+      saveState();
+      renderCurrentView();
+    }
+
+    function addDietLog(e) {
+      e.preventDefault();
+      const name = document.getElementById('diet-name').value.trim();
+      const kcal = Math.max(0, Number(document.getElementById('diet-kcal').value) || 0);
+      const protein = Math.max(0, Number(document.getElementById('diet-prot').value) || 0);
+      if (!name) return;
+
+      state.dietLogs.push({
+        id: uid('diet'),
+        dateKey: getLocalDateKey(),
+        name,
+        kcal,
+        protein
+      });
+      saveState();
+      showToast(`Logged ${name}`, 'success');
+      renderCurrentView();
+    }
+
+    function deleteDietLog(id) {
+      state.dietLogs = state.dietLogs.filter(d => d.id !== id);
+      saveState();
+      renderCurrentView();
+    }
+
+    function adjustWater(delta) {
+      const snap = getTodaySnapshot();
+      snap.waterGlasses = Math.max(0, (snap.waterGlasses || 0) + delta);
+      saveState();
+      renderCurrentView();
+    }
+
+    function saveTodayWeight(e) {
+      e.preventDefault();
+      const val = Number(document.getElementById('weight-input').value);
+      if (!val || val <= 0) return;
+      const todayKey = getLocalDateKey();
+      const existing = state.weightLogs.find(w => w.dateKey === todayKey);
+      if (existing) {
+        existing.kg = val;
+      } else {
+        state.weightLogs.push({ dateKey: todayKey, kg: val });
+      }
+      saveState();
+      showToast(`Saved weight: ${val} kg`, 'success');
+      renderCurrentView();
+    }
+
+    /* ==========================================================================
+       4. CARE TAB RENDERER & ACTIONS
+       ========================================================================== */
+    let newRoutineDays = [true, true, true, true, true, true, true];
+    let editingRoutineId = null;
+
+    function renderCareTab() {
+      const todayKey = getLocalDateKey();
+      const last7Keys = Array.from({ length: 7 }, (_, i) => addDaysToKey(todayKey, i - 6));
+
+      return `
+        <header class="top-header">
+          <div>
+            <h1 style="font-size:22px; font-weight:700;">Self-Care & Habits</h1>
+            <div class="text-xs text-muted mt-1">Edits apply from tomorrow • Today uses locked snapshot</div>
+          </div>
+        </header>
+
+        <!-- Add New Routine Card -->
+        <section class="card">
+          <div class="card-header">
+            <h2 class="card-title">+ Add Routine</h2>
+          </div>
+          <form onsubmit="addRoutine(event)">
+            <div class="mb-2">
+              <input id="new-routine-name" class="input" type="text" placeholder="e.g. Retinol serum, 10k steps, No sugar..." required />
+            </div>
+            <div class="grid-2 mb-2">
+              <div>
+                <label class="field-label">Category</label>
+                <select id="new-routine-group" class="select">
+                  ${CARE_GROUPS.map(g => `<option value="${g}">${g}</option>`).join('')}
+                </select>
+              </div>
+              <div>
+                <label class="field-label">Time of Day</label>
+                <select id="new-routine-tod" class="select">
+                  ${TIME_OF_DAY_GROUPS.map(t => `<option value="${t}">${t}</option>`).join('')}
+                </select>
+              </div>
+            </div>
+            <label class="field-label">Due Days (S M T W T F S)</label>
+            <div class="weekday-toggles mb-3">
+              ${WEEKDAY_SHORT.map((lbl, idx) => `
+                <button
+                  type="button"
+                  class="wk-btn ${newRoutineDays[idx] ? 'active' : ''}"
+                  onclick="toggleNewRoutineDay(${idx})"
+                >${lbl}</button>
+              `).join('')}
+            </div>
+            <button type="submit" class="btn btn-primary" style="width:100%;">Save Routine</button>
+          </form>
+        </section>
+
+        <!-- Grouped Routines -->
+        ${CARE_GROUPS.map(group => {
+          const groupItems = (state.routines || []).filter(r => r.group === group);
+          return `
+            <section class="card">
+              <div class="card-header">
+                <h2 class="card-title">${escapeHtml(group)}</h2>
+                <span class="badge badge-muted">${groupItems.length}</span>
+              </div>
+              ${groupItems.length === 0
+                ? `<p class="text-xs text-muted">No routines in ${escapeHtml(group)}.</p>`
+                : groupItems.map(r => {
+                  const isEditing = editingRoutineId === r.id;
+                  return `
+                    <div class="block-row" style="flex-direction:column; align-items:stretch;">
+                      ${isEditing ? `
+                        <div>
+                          <input class="input mb-2" type="text" value="${escapeHtml(r.name)}" onchange="updateRoutineField('${r.id}', 'name', this.value)" />
+                          <div class="grid-2 mb-2">
+                            <select class="select" onchange="updateRoutineField('${r.id}', 'group', this.value)">
+                              ${CARE_GROUPS.map(g => `<option value="${g}" ${g === r.group ? 'selected' : ''}>${g}</option>`).join('')}
+                            </select>
+                            <select class="select" onchange="updateRoutineField('${r.id}', 'timeOfDay', this.value)">
+                              ${TIME_OF_DAY_GROUPS.map(t => `<option value="${t}" ${t === r.timeOfDay ? 'selected' : ''}>${t}</option>`).join('')}
+                            </select>
+                          </div>
+                          <div class="weekday-toggles mb-2">
+                            ${WEEKDAY_SHORT.map((lbl, idx) => `
+                              <button type="button" class="wk-btn ${r.days[idx] ? 'active' : ''}" onclick="toggleRoutineDay('${r.id}', ${idx})">${lbl}</button>
+                            `).join('')}
+                          </div>
+                          <div class="row-between">
+                            <button type="button" class="btn btn-sm btn-danger-outline" onclick="deleteRoutine('${r.id}')">
+                              ${pendingConfirmKey === `del_r_${r.id}` ? 'Confirm Delete' : 'Delete'}
+                            </button>
+                            <button type="button" class="btn btn-sm btn-primary" onclick="setEditingRoutine(null)">Done Editing</button>
+                          </div>
+                        </div>
+                      ` : `
+                        <div class="row-between">
+                          <div>
+                            <div class="font-semi text-sm">${escapeHtml(r.name)}</div>
+                            <div class="row mt-1">
+                              <span class="badge badge-accent">${r.timeOfDay}</span>
+                              <span class="text-xs text-muted">${WEEKDAY_SHORT.map((d, i) => r.days[i] ? d : '·').join(' ')}</span>
+                            </div>
+                          </div>
+                          <button class="btn btn-sm btn-ghost" onclick="setEditingRoutine('${r.id}')">Edit</button>
+                        </div>
+                        <div class="row-between mt-2" style="padding-top:8px; border-top:1px solid var(--border);">
+                          <span class="text-xs text-muted">Last 7 days:</span>
+                          <div class="dots-row">
+                            ${last7Keys.map(dk => {
+                              const dow = parseDateKey(dk).getDay();
+                              const isDue = r.days[dow];
+                              const snap = state.days[dk];
+                              const snapR = snap && snap.routines ? snap.routines.find(sr => sr.id === r.id) : null;
+                              let cls = 'not-due';
+                              let symbol = '·';
+                              if (snapR) {
+                                if (snapR.done) {
+                                  cls = 'done';
+                                  symbol = '✓';
+                                } else if (dk < todayKey) {
+                                  cls = 'missed';
+                                  symbol = '✕';
+                                } else {
+                                  cls = 'pending';
+                                  symbol = '•';
+                                }
+                              } else if (isDue && dk < todayKey) {
+                                cls = 'not-due';
+                              }
+                              return `<span class="day-dot ${cls}" title="${dk}">${symbol}</span>`;
+                            }).join('')}
+                          </div>
+                        </div>
+                      `}
+                    </div>
+                  `;
+                }).join('')
+              }
+            </section>
+          `;
+        }).join('')}
+      `;
+    }
+
+    function toggleNewRoutineDay(idx) {
+      newRoutineDays[idx] = !newRoutineDays[idx];
+      renderCurrentView();
+    }
+
+    function addRoutine(e) {
+      e.preventDefault();
+      const name = document.getElementById('new-routine-name').value.trim();
+      const group = document.getElementById('new-routine-group').value;
+      const timeOfDay = document.getElementById('new-routine-tod').value;
+      if (!name) return;
+      if (!newRoutineDays.some(Boolean)) {
+        showToast('Select at least one weekday.', 'danger');
+        return;
+      }
+
+      state.routines.push({
+        id: uid('r'),
+        name,
+        group,
+        timeOfDay,
+        days: [...newRoutineDays]
+      });
+      newRoutineDays = [true, true, true, true, true, true, true];
+      saveState();
+      showToast('Routine added (applies from tomorrow)', 'success');
+      renderCurrentView();
+    }
+
+    function setEditingRoutine(id) {
+      editingRoutineId = id;
+      renderCurrentView();
+    }
+
+    function updateRoutineField(id, field, val) {
+      const r = state.routines.find(item => item.id === id);
+      if (!r) return;
+      if (field === 'name' && !val.trim()) return;
+      r[field] = val.trim ? val.trim() : val;
+      saveState();
+      renderCurrentView();
+    }
+
+    function toggleRoutineDay(id, dayIdx) {
+      const r = state.routines.find(item => item.id === id);
+      if (!r) return;
+      r.days[dayIdx] = !r.days[dayIdx];
+      saveState();
+      renderCurrentView();
+    }
+
+    function deleteRoutine(id) {
+      if (!requireTwoTapConfirm(`del_r_${id}`, 'Tap Confirm Delete to remove routine')) return;
+      state.routines = state.routines.filter(r => r.id !== id);
+      editingRoutineId = null;
+      saveState();
+      showToast('Routine deleted');
+      renderCurrentView();
+    }
+
+    /* ==========================================================================
+       5. PLAN TAB RENDERER & ACTIONS
+       ========================================================================== */
+    function renderPlanTab() {
+      const ttList = Object.values(state.timetables);
+      if (!state.timetables[state.selectedPlanTimetableId] && ttList.length > 0) {
+        state.selectedPlanTimetableId = ttList[0].id;
+      }
+      const activeTT = state.timetables[state.selectedPlanTimetableId];
+      const sortedBlocks = activeTT
+        ? activeTT.blocks.slice().sort((a, b) => timeToMinutes(a.start) - timeToMinutes(b.start))
+        : [];
+
+      return `
+        <header class="top-header">
+          <div>
+            <h1 style="font-size:22px; font-weight:700;">Timetable Planner</h1>
+            <div class="text-xs text-muted mt-1">Edits apply from tomorrow • Today's snapshot stays locked</div>
+          </div>
+        </header>
+
+        <!-- Timetable Selector & Template Actions -->
+        <section class="card">
+          <label class="field-label">Select Timetable Template</label>
+          <select class="select mb-2" onchange="selectPlanTimetable(this.value)">
+            ${ttList.map(tt => `
+              <option value="${tt.id}" ${tt.id === activeTT.id ? 'selected' : ''}>${escapeHtml(tt.name)}</option>
+            `).join('')}
+          </select>
+
+          <div class="grid-3 mb-3">
+            <button class="btn btn-sm" onclick="createTimetable()">+ New</button>
+            <button class="btn btn-sm" onclick="duplicateTimetable()">Duplicate</button>
+            <button class="btn btn-sm btn-danger-outline" onclick="deleteTimetable()" ${ttList.length <= 1 ? 'disabled' : ''}>
+              ${pendingConfirmKey === 'del_tt' ? 'Confirm' : 'Delete'}
+            </button>
+          </div>
+
+          <label class="field-label">Template Name</label>
+          <input
+            class="input"
+            type="text"
+            value="${escapeHtml(activeTT.name)}"
+            onchange="renameTimetable(this.value)"
+          />
+        </section>
+
+        <!-- Block Editor -->
+        <section class="card">
+          <div class="card-header">
+            <h2 class="card-title">Schedule Blocks (${sortedBlocks.length})</h2>
+            <button class="btn btn-sm btn-primary" onclick="addTimetableBlock()">+ Add Block</button>
+          </div>
+
+          ${sortedBlocks.map(b => `
+            <div class="block-row" style="flex-direction:column; align-items:stretch;">
+              <div class="grid-3 mb-2">
+                <div>
+                  <label class="field-label">Start</label>
+                  <input class="input" type="time" value="${b.start}" onchange="updateTimetableBlock('${b.id}', 'start', this.value)" />
+                </div>
+                <div>
+                  <label class="field-label">End</label>
+                  <input class="input" type="time" value="${b.end}" onchange="updateTimetableBlock('${b.id}', 'end', this.value)" />
+                </div>
+                <div>
+                  <label class="field-label">Category</label>
+                  <select class="select" onchange="updateTimetableBlock('${b.id}', 'category', this.value)">
+                    ${CATEGORIES.map(c => `<option value="${c}" ${c === b.category ? 'selected' : ''}>${c}</option>`).join('')}
+                  </select>
+                </div>
+              </div>
+              <div class="row">
+                <input
+                  class="input"
+                  style="flex:1;"
+                  type="text"
+                  value="${escapeHtml(b.title)}"
+                  onchange="updateTimetableBlock('${b.id}', 'title', this.value)"
+                  aria-label="Block title"
+                />
+                <button class="btn btn-icon btn-ghost" style="color:var(--danger);" onclick="removeTimetableBlock('${b.id}')" aria-label="Remove block">✕</button>
+              </div>
+            </div>
+          `).join('')}
+        </section>
+
+        <!-- Weekday Assignment -->
+        <section class="card">
+          <div class="card-header">
+            <h2 class="card-title">Weekday Assignments</h2>
+          </div>
+          ${WEEKDAY_NAMES.map((dayName, idx) => `
+            <div class="row-between mb-2">
+              <span class="text-sm font-semi" style="width:105px;">${dayName}</span>
+              <select class="select" style="flex:1;" onchange="assignWeekdayTimetable(${idx}, this.value)">
+                ${ttList.map(tt => `
+                  <option value="${tt.id}" ${state.weekdayTimetables[idx] === tt.id ? 'selected' : ''}>${escapeHtml(tt.name)}</option>
+                `).join('')}
+              </select>
+            </div>
+          `).join('')}
+        </section>
+
+        <!-- Exam Period Automatic Override -->
+        <section class="card">
+          <div class="card-header">
+            <h2 class="card-title">Exam Period Override</h2>
+            <label class="row" style="cursor:pointer;">
+              <input
+                type="checkbox"
+                style="width:20px; height:20px;"
+                ${state.examPeriod.enabled ? 'checked' : ''}
+                onchange="toggleExamPeriod(this.checked)"
+              />
+              <span class="text-sm font-semi">Active</span>
+            </label>
+          </div>
+          <p class="text-xs text-muted mb-2">
+            Automatically switches your scheduled timetable during exam dates.
+          </p>
+          <div class="grid-2 mb-2">
+            <div>
+              <label class="field-label">Start Date</label>
+              <input class="input" type="date" value="${state.examPeriod.startDate || ''}" onchange="updateExamPeriod('startDate', this.value)" />
+            </div>
+            <div>
+              <label class="field-label">End Date</label>
+              <input class="input" type="date" value="${state.examPeriod.endDate || ''}" onchange="updateExamPeriod('endDate', this.value)" />
+            </div>
+          </div>
+          <label class="field-label">Exam Timetable</label>
+          <select class="select" onchange="updateExamPeriod('timetableId', this.value)">
+            ${ttList.map(tt => `
+              <option value="${tt.id}" ${state.examPeriod.timetableId === tt.id ? 'selected' : ''}>${escapeHtml(tt.name)}</option>
+            `).join('')}
+          </select>
+        </section>
+      `;
+    }
+
+    function selectPlanTimetable(id) {
+      state.selectedPlanTimetableId = id;
+      saveState();
+      renderCurrentView();
+    }
+
+    function createTimetable() {
+      const id = uid('tt');
+      state.timetables[id] = {
+        id,
+        name: `Custom Plan ${Object.keys(state.timetables).length + 1}`,
+        blocks: [
+          { id: uid('b'), start: '07:00', end: '08:00', title: 'Morning Routine', category: 'Care' },
+          { id: uid('b'), start: '09:00', end: '12:00', title: 'Deep Work / Study', category: 'Study' }
+        ]
+      };
+      state.selectedPlanTimetableId = id;
+      saveState();
+      showToast('Created new timetable', 'success');
+      renderCurrentView();
+    }
+
+    function duplicateTimetable() {
+      const src = state.timetables[state.selectedPlanTimetableId];
+      if (!src) return;
+      const id = uid('tt');
+      state.timetables[id] = {
+        id,
+        name: `${src.name} (Copy)`,
+        blocks: src.blocks.map(b => ({ ...b, id: uid('b') }))
+      };
+      state.selectedPlanTimetableId = id;
+      saveState();
+      showToast('Timetable duplicated', 'success');
+      renderCurrentView();
+    }
+
+    function renameTimetable(newName) {
+      const trimmed = newName.trim();
+      if (!trimmed) return;
+      const tt = state.timetables[state.selectedPlanTimetableId];
+      if (tt) {
+        tt.name = trimmed;
+        saveState();
+        showToast('Timetable renamed');
+        renderCurrentView();
+      }
+    }
+
+    function deleteTimetable() {
+      const keys = Object.keys(state.timetables);
+      if (keys.length <= 1) return;
+      if (!requireTwoTapConfirm('del_tt', 'Tap Confirm again to delete this timetable')) return;
+
+      const delId = state.selectedPlanTimetableId;
+      delete state.timetables[delId];
+      const fallbackId = Object.keys(state.timetables)[0];
+      state.selectedPlanTimetableId = fallbackId;
+
+      for (let i = 0; i < 7; i++) {
+        if (state.weekdayTimetables[i] === delId) state.weekdayTimetables[i] = fallbackId;
+      }
+      if (state.examPeriod.timetableId === delId) state.examPeriod.timetableId = fallbackId;
+
+      saveState();
+      showToast('Timetable deleted');
+      renderCurrentView();
+    }
+
+    function addTimetableBlock() {
+      const tt = state.timetables[state.selectedPlanTimetableId];
+      if (!tt) return;
+      tt.blocks.push({
+        id: uid('b'),
+        start: '12:00',
+        end: '13:00',
+        title: 'New Scheduled Block',
+        category: 'Study'
+      });
+      saveState();
+      showToast('Block added (applies from tomorrow)');
+      renderCurrentView();
+    }
+
+    function updateTimetableBlock(blockId, field, value) {
+      const tt = state.timetables[state.selectedPlanTimetableId];
+      if (!tt) return;
+      const block = tt.blocks.find(b => b.id === blockId);
+      if (!block) return;
+      if (field === 'title' && !value.trim()) return;
+      block[field] = field === 'title' ? value.trim() : value;
+      saveState();
+      renderCurrentView();
+    }
+
+    function removeTimetableBlock(blockId) {
+      const tt = state.timetables[state.selectedPlanTimetableId];
+      if (!tt) return;
+      tt.blocks = tt.blocks.filter(b => b.id !== blockId);
+      saveState();
+      showToast('Block removed');
+      renderCurrentView();
+    }
+
+    function assignWeekdayTimetable(dow, ttId) {
+      state.weekdayTimetables[dow] = ttId;
+      saveState();
+      showToast(`Updated ${WEEKDAY_NAMES[dow]}`);
+    }
+
+    function toggleExamPeriod(enabled) {
+      state.examPeriod.enabled = enabled;
+      saveState();
+      showToast(enabled ? 'Exam period override enabled' : 'Exam period override disabled');
+      renderCurrentView();
+    }
+
+    function updateExamPeriod(field, val) {
+      state.examPeriod[field] = val;
+      saveState();
+    }
+
+    /* ==========================================================================
+       6. STATS TAB RENDERER & ACTIONS
+       ========================================================================== */
+    function renderStatsTab() {
+      const todayKey = getLocalDateKey();
+      const streaks = computeStreaks();
+      const threshold = state.settings.streakThreshold || 80;
+
+      // Last 28 days for Heatmap & Avg Score
+      const last28Keys = Array.from({ length: 28 }, (_, i) => addDaysToKey(todayKey, i - 27));
+      let trackedDaysCount = 0;
+      let scoreSum = 0;
+
+      const heatCells = last28Keys.map(dk => {
+        const snap = state.days[dk];
+        const dayNum = Number(dk.split('-')[2]);
+        if (!snap) {
+          return { dk, dayNum, score: null, status: 'empty' };
+        }
+        const sc = calculateDayScore(snap).score;
+        trackedDaysCount += 1;
+        scoreSum += sc;
+        let status = 'missed';
+        if (sc >= threshold) status = 'qualifies';
+        else if (sc > 0) status = 'partial';
+        return { dk, dayNum, score: sc, status };
+      });
+
+      const avgScore = trackedDaysCount > 0 ? Math.round(scoreSum / trackedDaysCount) : 0;
+
+      // Study time last 7 days
+      const last7Keys = Array.from({ length: 7 }, (_, i) => addDaysToKey(todayKey, i - 6));
+      const dailyStudy7 = last7Keys.map(dk => {
+        const snapMins = state.days[dk] ? (state.days[dk].studyMinutesLogged || 0) : 0;
+        const sessMins = (state.studySessions || [])
+          .filter(s => s.dateKey === dk)
+          .reduce((sum, s) => sum + (s.minutes || 0), 0);
+        return {
+          dk,
+          label: parseDateKey(dk).toLocaleDateString(undefined, { weekday: 'narrow' }),
+          mins: Math.max(snapMins, sessMins)
+        };
+      });
+      const totalStudy7Mins = dailyStudy7.reduce((s, d) => s + d.mins, 0);
+      const study7Formatted = `${Math.floor(totalStudy7Mins / 60)}h ${totalStudy7Mins % 60}m`;
+
+      // Gym sessions this week (Mon-Sun)
+      const weekStartKey = getStartOfWeekKey(todayKey);
+      const gymSessionsThisWeek = new Set(
+        (state.gymLogs || [])
+          .filter(g => g.dateKey >= weekStartKey && g.dateKey <= todayKey)
+          .map(g => g.dateKey)
+      ).size;
+
+      // Selected day inspection card (read-only)
+      const inspectedSnap = state.days[selectedStatsDateKey];
+      const inspectedScore = inspectedSnap ? calculateDayScore(inspectedSnap) : null;
+
+      return `
+        <header class="top-header">
+          <div>
+            <h1 style="font-size:22px; font-weight:700;">Discipline Analytics</h1>
+            <div class="text-xs text-muted mt-1">Consistency, focus volume & 28-day accountability</div>
+          </div>
+        </header>
+
+        <!-- KPI Grid -->
+        <div class="kpi-grid">
+          <div class="kpi-box">
+            <div class="text-xs text-muted font-semi">Current Streak</div>
+            <div class="kpi-val">🔥 ${streaks.current}d</div>
+          </div>
+          <div class="kpi-box">
+            <div class="text-xs text-muted font-semi">Best Streak</div>
+            <div class="kpi-val">🏆 ${streaks.best}d</div>
+          </div>
+          <div class="kpi-box">
+            <div class="text-xs text-muted font-semi">Avg Score (28d)</div>
+            <div class="kpi-val">${avgScore}%</div>
+          </div>
+          <div class="kpi-box">
+            <div class="text-xs text-muted font-semi">Study (Last 7d)</div>
+            <div class="kpi-val">${study7Formatted}</div>
+          </div>
+        </div>
+
+        <div class="card" style="padding:12px 16px;">
+          <div class="row-between">
+            <span class="text-sm font-semi">🏋️ Gym Sessions This Week (Mon–Sun)</span>
+            <span class="badge badge-success">${gymSessionsThisWeek} session${gymSessionsThisWeek === 1 ? '' : 's'}</span>
+          </div>
+        </div>
+
+        <!-- 28-Day Heatmap -->
+        <section class="card">
+          <div class="card-header">
+            <h2 class="card-title">28-Day Discipline Heatmap</h2>
+            <span class="badge badge-success">Green = ${threshold}%+</span>
+          </div>
+          <div class="heatmap-grid">
+            ${heatCells.map(cell => `
+              <button
+                type="button"
+                class="heat-cell ${cell.status} ${selectedStatsDateKey === cell.dk ? 'selected' : ''}"
+                onclick="selectStatsDay('${cell.dk}')"
+                title="${cell.dk}: ${cell.score !== null ? cell.score + '%' : 'No data'}"
+              >
+                <span>${cell.dayNum}</span>
+                <span style="font-size:9px; opacity:0.9;">${cell.score !== null ? cell.score + '%' : '—'}</span>
+              </button>
+            `).join('')}
+          </div>
+
+          <!-- Read-only Day Inspector -->
+          <div class="mt-3" style="padding:10px 12px; border-radius:var(--radius-md); background:var(--bg-app); border:1px solid var(--border);">
+            <div class="row-between">
+              <strong class="text-sm">${formatDisplayDate(selectedStatsDateKey)} ${selectedStatsDateKey < todayKey ? '(Read-Only)' : '(Today)'}</strong>
+              ${inspectedScore
+                ? `<span class="badge ${inspectedScore.score >= threshold ? 'badge-success' : 'badge-muted'}">${inspectedScore.score}% Score</span>`
+                : `<span class="badge badge-muted">No Record</span>`
+              }
+            </div>
+            ${inspectedSnap ? `
+              <div class="text-xs text-secondary mt-1">
+                Timetable: <strong>${escapeHtml(inspectedSnap.timetableName)}</strong> •
+                Blocks: ${inspectedScore.doneBlocks}/${inspectedScore.totalBlocks} •
+                Routines: ${inspectedScore.doneRoutines}/${inspectedScore.totalRoutines} •
+                Study: ${inspectedSnap.studyMinutesLogged || 0}/${inspectedSnap.studyGoalMin}m
+              </div>
+            ` : `<div class="text-xs text-muted mt-1">App was not opened on this date.</div>`}
+          </div>
+        </section>
+
+        <!-- 7-Day Study Minutes Bar Chart -->
+        <section class="card">
+          <div class="card-header">
+            <h2 class="card-title">Study Minutes (Last 7 Days)</h2>
+            <span class="text-xs text-muted">Goal: ${state.settings.dailyStudyGoalMin}m</span>
+          </div>
+          ${renderStudyBarChartSvg(dailyStudy7, state.settings.dailyStudyGoalMin || 90)}
+        </section>
+      `;
+    }
+
+    function selectStatsDay(dk) {
+      selectedStatsDateKey = dk;
+      renderCurrentView();
+    }
+
+    function renderStudyBarChartSvg(daysData, goalMins) {
+      const W = 480;
+      const H = 160;
+      const padL = 32;
+      const padR = 12;
+      const padT = 18;
+      const padB = 26;
+
+      const maxVal = Math.max(goalMins * 1.2, ...daysData.map(d => d.mins), 60);
+      const plotW = W - padL - padR;
+      const plotH = H - padT - padB;
+      const barSlot = plotW / daysData.length;
+      const barW = Math.min(34, barSlot * 0.58);
+
+      const goalY = padT + (1 - goalMins / maxVal) * plotH;
+
+      return `
+        <svg viewBox="0 0 ${W} ${H}" style="width:100%; height:auto; display:block;">
+          <line x1="${padL}" y1="${goalY.toFixed(1)}" x2="${W - padR}" y2="${goalY.toFixed(1)}" stroke="var(--success)" stroke-dasharray="4 3" stroke-width="1.5" />
+          <text x="2" y="${goalY.toFixed(1)}" fill="var(--success)" font-size="9" font-weight="700">${goalMins}</text>
+          <line x1="${padL}" y1="${H - padB}" x2="${W - padR}" y2="${H - padB}" stroke="var(--border)" />
+
+          ${daysData.map((d, i) => {
+            const barH = (d.mins / maxVal) * plotH;
+            const x = padL + i * barSlot + (barSlot - barW) / 2;
+            const y = H - padB - barH;
+            const met = d.mins >= goalMins;
+            return `
+              <rect
+                x="${x.toFixed(1)}" y="${y.toFixed(1)}"
+                width="${barW.toFixed(1)}" height="${Math.max(2, barH).toFixed(1)}"
+                rx="5"
+                fill="${met ? 'var(--success)' : 'var(--accent)'}"
+              />
+              ${d.mins > 0 ? `
+                <text x="${(x + barW / 2).toFixed(1)}" y="${(y - 4).toFixed(1)}" text-anchor="middle" fill="var(--text-secondary)" font-size="9" font-weight="700">${d.mins}</text>
+              ` : ''}
+              <text x="${(x + barW / 2).toFixed(1)}" y="${H - 8}" text-anchor="middle" fill="var(--text-muted)" font-size="11" font-weight="600">${d.label}</text>
+            `;
+          }).join('')}
+        </svg>
+      `;
+    }
+
+    /* ==========================================================================
+       7. SETTINGS SCREEN RENDERER & ACTIONS
+       ========================================================================== */
+    function renderSettings() {
+      const container = document.getElementById('settings-content');
+      if (!container) return;
+
+      const s = state.settings;
+      const locked = isStrictModeLocked();
+      const notifPerm = ('Notification' in window) ? Notification.permission : 'unsupported';
+
+      container.innerHTML = `
+        <div class="top-header">
+          <h1 style="font-size:22px; font-weight:700;">Settings</h1>
+          <button class="btn" onclick="closeSettings()">✕ Close</button>
+        </div>
+
+        <!-- Strict Mode Anti-Cheating Card -->
+        <section class="card">
+          <div class="row-between mb-2">
+            <div>
+              <h2 class="card-title">🛡️ Strict Mode (Anti-Cheat)</h2>
+              <div class="text-xs text-muted mt-1">
+                ${s.strictMode
+                  ? (locked ? `Locked ON for ${getStrictLockRemainingText()}` : '7-day lock period completed (can turn off)')
+                  : 'Currently OFF — turning ON locks it for 7 days'
+                }
+              </div>
+            </div>
+            <button
+              class="btn ${s.strictMode ? 'btn-primary' : ''}"
+              ${s.strictMode && locked ? 'disabled' : ''}
+              onclick="toggleStrictMode()"
+            >
+              ${s.strictMode ? (locked ? '🔒 Locked ON' : 'Turn OFF') : 'Turn ON'}
+            </button>
+          </div>
+          <p class="text-xs text-secondary">
+            Enforces task time windows (+1h grace), 30s undo limit, study distraction penalties (&gt;45s away), 5m minimum study sessions, and a 7-day lock against disabling.
+          </p>
+        </section>
+
+        <!-- Appearance & Alerts -->
+        <section class="card">
+          <h2 class="card-title mb-3">Appearance & Alerts</h2>
+          <label class="field-label">Color Theme</label>
+          <div class="grid-3 mb-3">
+            ${['system', 'light', 'dark'].map(th => `
+              <button
+                class="pill-choice ${s.theme === th ? 'active' : ''}"
+                onclick="setThemePreference('${th}')"
+                style="text-transform:capitalize;"
+              >${th}</button>
+            `).join('')}
+          </div>
+
+          <div class="row-between mb-2">
+            <div>
+              <div class="text-sm font-semi">Browser Notifications</div>
+              <div class="text-xs text-muted">Status: ${notifPerm}</div>
+            </div>
+            <button class="btn btn-sm btn-primary" onclick="requestBrowserNotifications()">
+              ${notifPerm === 'granted' ? '✓ Enabled' : 'Request Permission'}
+            </button>
+          </div>
+
+          <div class="row-between mt-3">
+            <div>
+              <div class="text-sm font-semi">In-App Discipline Chime</div>
+              <div class="text-xs text-muted">Subtle audio alert on warnings & completions</div>
+            </div>
+            <input
+              type="checkbox"
+              style="width:22px; height:22px;"
+              ${s.soundAlerts ? 'checked' : ''}
+              onchange="updateSetting('soundAlerts', this.checked)"
+            />
+          </div>
+        </section>
+
+        <!-- Daily Targets -->
+        <section class="card">
+          <h2 class="card-title mb-3">Daily Targets</h2>
+          <div class="grid-2 mb-2">
+            <div>
+              <label class="field-label">Streak Threshold (%)</label>
+              <input class="input" type="number" min="50" max="100" value="${s.streakThreshold}" onchange="updateSetting('streakThreshold', Number(this.value))" />
+            </div>
+            <div>
+              <label class="field-label">Daily Study Goal (min)</label>
+              <input class="input" type="number" min="15" max="720" value="${s.dailyStudyGoalMin}" onchange="updateSetting('dailyStudyGoalMin', Number(this.value))" />
+            </div>
+          </div>
+          <div class="grid-3">
+            <div>
+              <label class="field-label">Calories (kcal)</label>
+              <input class="input" type="number" min="800" max="8000" value="${s.dailyCaloriesTarget}" onchange="updateSetting('dailyCaloriesTarget', Number(this.value))" />
+            </div>
+            <div>
+              <label class="field-label">Protein (g)</label>
+              <input class="input" type="number" min="20" max="500" value="${s.dailyProteinTarget}" onchange="updateSetting('dailyProteinTarget', Number(this.value))" />
+            </div>
+            <div>
+              <label class="field-label">Water (glasses)</label>
+              <input class="input" type="number" min="1" max="30" value="${s.dailyWaterTarget}" onchange="updateSetting('dailyWaterTarget', Number(this.value))" />
+            </div>
+          </div>
+          <div class="text-xs text-muted mt-2">
+            Note: Study goal changes apply starting tomorrow so today's snapshot stays fair.
+          </div>
+        </section>
+
+        <!-- Backup & Restore -->
+        <section class="card">
+          <h2 class="card-title mb-2">Backup & Restore (JSON)</h2>
+          <p class="text-xs text-muted mb-2">
+            All data lives locally in your browser. Copy a JSON backup regularly to move devices or prevent data loss.
+          </p>
+          <button class="btn btn-primary mb-2" style="width:100%;" onclick="copyBackupJson()">Copy Backup to Clipboard</button>
+
+          ${backupFallbackVisible ? `
+            <div class="mb-3">
+              <label class="field-label">Backup JSON (Select all & copy manually if needed)</label>
+              <textarea id="backup-export-box" class="textarea" readonly onclick="this.select()">${escapeHtml(JSON.stringify(state))}</textarea>
+            </div>
+          ` : ''}
+
+          <label class="field-label mt-2">Restore from JSON</label>
+          <textarea id="backup-import-box" class="textarea mb-2" placeholder="Paste your Daily Discipline JSON backup here..."></textarea>
+          <button class="btn" style="width:100%;" onclick="restoreBackupJson()">Restore Backup</button>
+        </section>
+
+        <!-- Danger Zone: Two-Tap Reset -->
+        <section class="card" style="border-color:rgba(239, 68, 68, 0.4);">
+          <h2 class="card-title mb-2" style="color:var(--danger);">Danger Zone</h2>
+          <p class="text-xs text-muted mb-3">
+            Erase all tracked days, streaks, logs, and custom timetables, restoring fresh sample data.
+          </p>
+          <button class="btn btn-danger" style="width:100%;" onclick="resetAllAppData()">
+            ${pendingConfirmKey === 'reset_all_data' ? '⚠️ Tap Again to Permanently Erase Everything' : 'Reset All Data'}
+          </button>
+        </section>
+      `;
+    }
+
+    function toggleStrictMode() {
+      if (state.settings.strictMode) {
+        if (isStrictModeLocked()) {
+          showToast(`Locked for ${getStrictLockRemainingText()}`, 'danger');
+          return;
+        }
+        state.settings.strictMode = false;
+        showToast('Strict Mode turned OFF');
+      } else {
+        state.settings.strictMode = true;
+        state.settings.strictEnabledAt = Date.now();
+        showToast('Strict Mode ON — locked for 7 days!', 'success');
+      }
+      saveState();
+      renderSettings();
+    }
+
+    function setThemePreference(theme) {
+      state.settings.theme = theme;
+      applyTheme();
+      saveState();
+      renderSettings();
+    }
+
+    function updateSetting(key, val) {
+      if (typeof val === 'number' && (isNaN(val) || val <= 0)) return;
+      state.settings[key] = val;
+      saveState();
+      showToast('Setting saved');
+    }
+
+    async function copyBackupJson() {
+      const jsonStr = JSON.stringify(state);
+      backupFallbackVisible = true;
+      renderSettings();
+
+      try {
+        if (navigator.clipboard && navigator.clipboard.writeText) {
+          await navigator.clipboard.writeText(jsonStr);
+          showToast('Backup JSON copied to clipboard!', 'success');
+          return;
+        }
+      } catch (e) {}
+
+      // Legacy fallback
+      const box = document.getElementById('backup-export-box');
+      if (box) {
+        box.focus();
+        box.select();
+        try {
+          document.execCommand('copy');
+          showToast('Backup JSON copied!', 'success');
+        } catch (err) {
+          showToast('Clipboard blocked — copy directly from the box below.', 'danger');
+        }
+      }
+    }
+
+    function restoreBackupJson() {
+      const box = document.getElementById('backup-import-box');
+      if (!box || !box.value.trim()) {
+        showToast('Paste backup JSON first.', 'danger');
+        return;
+      }
+      try {
+        const parsed = JSON.parse(box.value.trim());
+        if (!parsed || typeof parsed !== 'object' || !parsed.settings || !parsed.timetables) {
+          throw new Error('Missing required fields');
+        }
+        state = parsed;
+        ensureDaySnapshot(state, getLocalDateKey());
+        applyTheme();
+        saveState();
+        showToast('Backup restored successfully!', 'success');
+        closeSettings();
+      } catch (e) {
+        showToast('Invalid JSON backup file. Restore aborted.', 'danger');
+      }
+    }
+
+    function resetAllAppData() {
+      if (!requireTwoTapConfirm('reset_all_data', 'Tap Reset All Data again to confirm erase')) return;
+      state = createDefaultState();
+      ensureDaySnapshot(state, getLocalDateKey());
+      applyTheme();
+      saveState();
+      backupFallbackVisible = false;
+      showToast('All data reset to default sample schedule.', 'success');
+      closeSettings();
+    }
+
+    /* ==========================================================================
+       LIVE TICKERS (1s TIMER & UNDO COUNTDOWN + 15s DISCIPLINE MONITOR)
+       ========================================================================== */
+    setInterval(() => {
+      // 1. Live Focus Timer tick
+      const t = state.activeTimer;
+      if (t && t.running) {
+        const elapsedMs = getElapsedTimerMs();
+        const elapsedSec = Math.floor(elapsedMs / 1000);
+        const targetSec = (t.modeMinutes || 0) * 60;
+
+        if (targetSec > 0 && elapsedSec >= targetSec) {
+          finishFocusTimer(true);
+          return;
+        }
+
+        if (activeTab === 'study') {
+          const clockEl = document.getElementById('focus-timer-clock');
+          const elapEl = document.getElementById('focus-timer-elapsed');
+          if (clockEl) {
+            const dispSec = targetSec > 0 ? Math.max(0, targetSec - elapsedSec) : elapsedSec;
+            clockEl.textContent = formatDurationMMSS(dispSec);
+          }
+          if (elapEl) {
+            elapEl.textContent = `${Math.floor(elapsedSec / 60)}m ${elapsedSec % 60}s`;
+          }
+        }
+      }
+
+      // 2. Live 30-second Undo countdown update on Today tab
+      if (activeTab === 'today' && state.settings.strictMode) {
+        const snap = getTodaySnapshot();
+        const now = Date.now();
+        const hasActiveUndo =
+          snap.blocks.some(b => b.done && b.doneAt && (now - b.doneAt) <= UNDO_WINDOW_MS + 1000) ||
+          snap.routines.some(r => r.done && r.doneAt && (now - r.doneAt) <= UNDO_WINDOW_MS + 1000);
+        if (hasActiveUndo) {
+          renderCurrentView();
+        }
+      }
+    }, 1000);
+
+    // Every 15 seconds: check deadlines, warnings, notifications & date rollover
+    setInterval(() => {
+      const todayKey = getLocalDateKey();
+      const wasNewDay = !state.days[todayKey];
+      ensureDaySnapshot(state, todayKey);
+      runDisciplineMonitor();
+      if (wasNewDay || activeTab === 'today') {
+        renderCurrentView();
+      }
+    }, 15000);
+
+    /* ==========================================================================
+       INITIALIZATION
+       ========================================================================== */
+    applyTheme();
+    renderCurrentView();
+    runDisciplineMonitor();
+    if (state.activeTimer && state.activeTimer.running) {
+      engageWakeLock();
+    }
+  </script>
+</body>
+</html>
